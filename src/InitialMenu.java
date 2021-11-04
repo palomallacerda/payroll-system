@@ -1,15 +1,17 @@
 package src;
 import java.util.LinkedList;
 import java.util.Scanner;
+import src.ultis.*; //importando a outra classe
 
 import src.modes.Employees;
 
 public class InitialMenu{
     // Vamos inicializar o menu
-    public static void menu() {
-        Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner(System.in);
+    LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
 
-        LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
+    public void menu() {
+       
         while(true){ 
             System.out.println("\n-------------------------------------------");
             System.out.println("----- Welcome to your payrool system ------");
@@ -26,24 +28,27 @@ public class InitialMenu{
             System.out.println("[8] - Undo/Redo");
             System.out.println("[9] - Scheduel payment");
             System.out.println("[10] - Create a new Scheduel payment");
-            System.out.println("[11] - Leave");
-
+            System.out.println("[11] - Leave\n");
+            System.err.print("--> ");
             int action = scan.nextInt();
-            
+     
             switch (action) {
                 case 0:
-                    System.out.println("List all employess");    
+                    Employees list = new Employees();  
+                    System.out.println("List all employess"); 
+                    list.printEmployee(); 
                     break;
                 case 1:
-                    System.out.println("Enter the employee name");
-                    
-                    employee = scan.nextLine(); // replace this
-                    
-                    System.out.println(employee+"Is added");
+                    AddEmployee add = new AddEmployee(); 
+                    employee.add(add.addNewEmployee());
+                    // Verificando apenas a saida
+                    System.out.println(employee.getLast().getName()+ " added "+ 
+                    "and " +employee.getLast().getAddress()+ " is the adress "+
+                    employee.getLast().getPaymentWay()+" is the payment way");
                     break;
                 case 2:
                     System.out.println("Enter the employee name");
-                    employee = scan.nextLine();
+                    //employee = scan.nextLine();
                     System.out.println(employee+"Is removed");
                     break;
                 case 3:
@@ -65,7 +70,6 @@ public class InitialMenu{
                     System.out.println("Undo/Redo");
                     break;
                 case 9:
-                 
                     System.out.println("Scheduel payment");
                     break;
                 case 10:
@@ -73,12 +77,13 @@ public class InitialMenu{
                     break;
                 case 11:
                     scan.close();//close input
+                    System.out.println("Closing System....");
+                    System.exit(0); //finalizando sem erros
                     break;
                 default:
                     System.out.println("Wrond action try again");
                     break;
-                
-            }
+            }     
         }
         
     }

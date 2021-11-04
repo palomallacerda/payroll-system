@@ -2,6 +2,7 @@ package src;
 
 public class Main {
     public static void main(String[] args){
-        InitialMenu.menu();
+        InitialMenu menu = new InitialMenu();
+        menu.menu();
     }
 }
