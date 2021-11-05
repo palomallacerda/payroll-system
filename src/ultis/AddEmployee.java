@@ -4,39 +4,39 @@ import src.modes.Employees;
 
 public class AddEmployee {
     Scanner scann = new Scanner(System.in);
-    public Employees addNewEmployee(){
-
+    public Employees addNewEmployee(int id){
+        
+        
         Employees employee = new Employees();
-        System.out.println("\n Enter the employee data");
 
-        System.out.print("Id - ");
-        employee.setId();
+        employee.setId(id);
+        System.out.println("\nEnter the employee data");
         System.out.print("Name - ");
         employee.setName();
-        System.out.println("Age - ");
+        System.out.print("Age - ");
         employee.setAge();
-
         System.out.print("Address - ");
         employee.setAddress();
         
-        System.out.println("Payment way:\n[1] - Mail paycheck\n[2] - Paycheck\n[3] - Deposit in bank account");
-        int way = scann.nextInt();
-        switch(way){
-            case 1:
+        while(true){
+            System.out.println("\nPayment way:\n[1] - Mail paycheck\n[2] - Paycheck\n[3] - Deposit in bank account");
+            System.out.print("--> ");
+            int way = scann.nextInt();
+            if(way == 1) {  
                 employee.setPaymentWay("Mail paycheck");
                 break;
-            case 2:
+            }else if(way == 2){
                 employee.setPaymentWay("Paycheck");
                 break;
-            case 3:
+            }else if(way == 3){
                 employee.setPaymentWay("Deposit in bank account");
                 break;
-            default:
-                System.out.println("Invalid input");
-                break;
+            }else{
+                System.out.println("Invalid input, Try again!"); ///retornar pro inicio do sistema
+            }
         }
-
-        System.out.println("Payment type:");
+        
+        //System.out.println("Payment type:");
         //to do
         return employee;
     }

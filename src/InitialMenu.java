@@ -2,16 +2,17 @@ package src;
 import java.util.LinkedList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
-
 import src.modes.Employees;
 
 public class InitialMenu{
     // Vamos inicializar o menu
     Scanner scan = new Scanner(System.in);
     LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
+    int id = 0;
 
     public void menu() {
-       
+       /*Verificar a viabilidade de talvvez add mais uma opção 
+       de salvar os dados em um arquivo separado*/
         while(true){ 
             System.out.println("\n-------------------------------------------");
             System.out.println("----- Welcome to your payrool system ------");
@@ -34,22 +35,25 @@ public class InitialMenu{
      
             switch (action) {
                 case 0:
-                    Employees list = new Employees();  
-                    System.out.println("List all employess"); 
-                    list.printEmployee(); 
+                    System.out.println("########## List of all employees ##########"); 
+                    for(int i = 0; i < employee.size();i++){  
+                        Employees aux = employee.get(i);
+                        System.out.println("[ID]- "+ aux.getId()+"\n[Name] - "+aux.getName()+
+                        "\n[Address] - "+ aux.getAddress()+
+                        "\n[Payment way] - "+ aux.getPaymentWay());
+                        System.out.println("---------------------------------------"); 
+                      
+                    }
                     break;
                 case 1:
                     AddEmployee add = new AddEmployee(); 
-                    employee.add(add.addNewEmployee());
-                    // Verificando apenas a saida
-                    System.out.println(employee.getLast().getName()+ " added "+ 
-                    "and " +employee.getLast().getAddress()+ " is the adress "+
-                    employee.getLast().getPaymentWay()+" is the payment way");
+                    employee.add(add.addNewEmployee(id));
+                    id += 1;
+                    System.out.println("\nGreat the employee was added!");
                     break;
                 case 2:
                     System.out.println("Enter the employee name");
                     //employee = scan.nextLine();
-                    System.out.println(employee+"Is removed");
                     break;
                 case 3:
                     System.out.println("Post  time card");
@@ -81,9 +85,13 @@ public class InitialMenu{
                     System.exit(0); //finalizando sem erros
                     break;
                 default:
-                    System.out.println("Wrond action try again");
+                    System.out.println("\nWrong action, try again!!");
                     break;
-            }     
+            }   
+            
+            System.out.println("\nClick [Enter] to continue");
+            scan.nextLine();
+            scan.nextLine();
         }
         
     }
