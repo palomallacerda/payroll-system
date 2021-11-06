@@ -4,12 +4,11 @@ import java.util.Scanner;
 public class Employees { //classe
     Scanner scan = new Scanner(System.in);
     String name; 
+    String employeeType; //Mudar pra uma lista talvez?
     int age;
     String address; 
     String paymentWay; 
-    int paymentType;
     int id = 0; 
-
  
     public void setName() {
         this.name = scan.next();  //Vê uma forma de retirar\n do scan (NextLine)
@@ -48,25 +47,20 @@ public class Employees { //classe
         return this.paymentWay;
     }
 
-    public void setPaymentType() {
+    public void setEmployeeType(String employeeType) {
         //add dps
-        this.paymentType = scan.nextInt();
+        this.employeeType = employeeType;
         //Criar forma de seleção para cada payment
     }
-    public void employee(String name, String address, int age, int paymentType, String paymentWay, int id){ //metodo
+    public String getEmployeeType() {
+        return this.employeeType;
+    }
+    public void employee(String name, String address, int age, String employeeType, String paymentWay, int id){ //metodo
         this.name = name;
         this.address = address;
         this.age = age;
-        this.paymentType = paymentType;
+        this.employeeType = employeeType;
         this.paymentWay = paymentWay;
         this.id = id;
     } //Analisar se é viavel
-
-    // public String printEmployee(){
-    //     return "\nEmployee UNIC ID: "+ this.id +
-    //            "\nEmployee name: "+ this.name +
-    //            "\nEmployee age "+ this.age+
-    //            "\nEmployee address: "+ this.address+
-    //            "\nEmployee payment type: "+ this.paymentType;
-    // }
 }

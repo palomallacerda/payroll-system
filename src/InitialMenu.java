@@ -40,6 +40,7 @@ public class InitialMenu{
                         Employees aux = employee.get(i);
                         System.out.println("[ID]- "+ aux.getId()+"\n[Name] - "+aux.getName()+
                         "\n[Address] - "+ aux.getAddress()+
+                        "\n[Employee Type] - "+ aux.getEmployeeType()+
                         "\n[Payment way] - "+ aux.getPaymentWay());
                         System.out.println("---------------------------------------"); 
                       
@@ -49,11 +50,11 @@ public class InitialMenu{
                     AddEmployee add = new AddEmployee(); 
                     employee.add(add.addNewEmployee(id));
                     id += 1;
-                    System.out.println("\nGreat the employee was added!");
+                    System.out.println("\nGreat, the employee was added!");
                     break;
                 case 2:
-                    System.out.println("Enter the employee name");
-                    //employee = scan.nextLine();
+                    RemoveEmployee remove = new RemoveEmployee();
+                    remove.deleteEmployee(employee);
                     break;
                 case 3:
                     System.out.println("Post  time card");
