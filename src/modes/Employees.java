@@ -6,6 +6,7 @@ public class Employees { //classe
     String name; 
     String employeeType; //Mudar pra uma lista talvez?
     int age;
+    String syndicate;
     String address; 
     String paymentWay; 
     int id = 0; 
@@ -25,6 +26,15 @@ public class Employees { //classe
         return this.name;
     }
 
+    public void setSyndicate(String syndicate) {
+        if(syndicate.equals("Y")){
+            this.syndicate = "Yes";
+        }
+        else this.syndicate = "No";
+    }
+    public String getSyndicate() {
+        return this.syndicate;
+    }
     public void setAddress() {
         this.address = scan.next();
         //verificar pois ele só lê a primeira linha
@@ -55,8 +65,9 @@ public class Employees { //classe
     public String getEmployeeType() {
         return this.employeeType;
     }
-    public void employee(String name, String address, int age, String employeeType, String paymentWay, int id){ //metodo
+    public void employee(String name, String address, int age, String syndicate,String employeeType, String paymentWay, int id){ //metodo
         this.name = name;
+        this.syndicate = syndicate;
         this.address = address;
         this.age = age;
         this.employeeType = employeeType;

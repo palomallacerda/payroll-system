@@ -11,7 +11,7 @@ public class InitialMenu{
     int id = 0;
 
     public void menu() {
-       /*Verificar a viabilidade de talvvez add mais uma opção 
+       /*Verificar a viabilidade de talvez add mais uma opção 
        de salvar os dados em um arquivo separado*/
         while(true){ 
             System.out.println("\n-------------------------------------------");
@@ -40,6 +40,7 @@ public class InitialMenu{
                         Employees aux = employee.get(i);
                         System.out.println("[ID]- "+ aux.getId()+"\n[Name] - "+aux.getName()+
                         "\n[Address] - "+ aux.getAddress()+
+                        "\n[Is in syndicate] -"+ aux.getSyndicate()+
                         "\n[Employee Type] - "+ aux.getEmployeeType()+
                         "\n[Payment way] - "+ aux.getPaymentWay());
                         System.out.println("---------------------------------------"); 

@@ -53,7 +53,21 @@ public class AddEmployee {
                 System.out.println("Invalid input, Try again!"); ///retornar pro inicio do sistema
             }
         }
-        
+
+        while(true){
+            System.out.println("\nEmployee is part of syndicate:\n[Y] - Yes\n[N] - No"); //Metodo de pagamento
+            System.out.print("--> ");
+            String key = scann.next();
+       
+            if(key.equals("Y") || key.equals("N")){
+                employee.setSyndicate(key);
+                break;
+            }
+            else{
+                System.out.println("Invalid input, Try again using upper case!");
+            }
+        }
+
         return employee;
     }
 }
