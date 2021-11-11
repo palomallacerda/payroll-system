@@ -3,12 +3,13 @@ import java.util.Scanner;
 
 public class Employees { //classe
     Scanner scan = new Scanner(System.in);
-    String name; 
-    String employeeType; //Mudar pra uma lista talvez?
-    int age;
-    String syndicate;
-    String address; 
-    String paymentWay; 
+    private String name; 
+    private String employeeType; //Mudar pra uma lista talvez?
+    private int age;
+    private boolean syndicate;
+    private String address; 
+    private String paymentWay; 
+    private int workedhours;
     int id = 0; 
  
     public void setName() {
@@ -25,14 +26,20 @@ public class Employees { //classe
     public String getName() {
         return this.name;
     }
+    public void setWorkedhours(int workedhours) {
+        this.workedhours = workedhours;
+    }
+    public int getWorkedhours() {
+        return workedhours;
+    }
 
     public void setSyndicate(String syndicate) {
         if(syndicate.equals("Y")){
-            this.syndicate = "Yes";
+            this.syndicate = true;
         }
-        else this.syndicate = "No";
+        else this.syndicate = false;
     }
-    public String getSyndicate() {
+    public boolean getSyndicate() {
         return this.syndicate;
     }
     public void setAddress() {
@@ -65,7 +72,7 @@ public class Employees { //classe
     public String getEmployeeType() {
         return this.employeeType;
     }
-    public void employee(String name, String address, int age, String syndicate,String employeeType, String paymentWay, int id){ //metodo
+    public void employee(String name, String address, int age, boolean syndicate,String employeeType, String paymentWay, int id){ //metodo
         this.name = name;
         this.syndicate = syndicate;
         this.address = address;

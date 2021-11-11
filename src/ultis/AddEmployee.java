@@ -5,7 +5,8 @@ import src.modes.Employees;
 public class AddEmployee {
     
     Scanner scann = new Scanner(System.in);
-    
+    SetSalary setsalary = new SetSalary();
+
     public Employees addNewEmployee(int id){
 
         Employees employee = new Employees();
@@ -17,7 +18,7 @@ public class AddEmployee {
         employee.setAge();
         System.out.print("Address - ");
         employee.setAddress();
-
+    
         while(true){
             System.out.println("\nEmployee type:\n[1] - Hourly\n[2] - Salaried\n[3] - Commissioned");
             System.out.print("--> ");
@@ -67,6 +68,8 @@ public class AddEmployee {
                 System.out.println("Invalid input, Try again using upper case!");
             }
         }
+        
+        //setsalary.salary();
 
         return employee;
     }

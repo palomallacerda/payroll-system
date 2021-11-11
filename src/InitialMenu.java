@@ -3,12 +3,14 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.modes.Employees;
+import src.modes.TimeCard;
 
 public class InitialMenu{
     // Vamos inicializar o menu
     Scanner scan = new Scanner(System.in);
     LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
     int id = 0;
+
 
     public void menu() {
        /*Verificar a viabilidade de talvez add mais uma opção 
@@ -35,16 +37,21 @@ public class InitialMenu{
      
             switch (action) {
                 case 0:
-                    System.out.println("########## List of all employees ##########"); 
-                    for(int i = 0; i < employee.size();i++){  
-                        Employees aux = employee.get(i);
-                        System.out.println("[ID]- "+ aux.getId()+"\n[Name] - "+aux.getName()+
-                        "\n[Address] - "+ aux.getAddress()+
-                        "\n[Is in syndicate] -"+ aux.getSyndicate()+
-                        "\n[Employee Type] - "+ aux.getEmployeeType()+
-                        "\n[Payment way] - "+ aux.getPaymentWay());
-                        System.out.println("---------------------------------------"); 
-                      
+                    if(employee.isEmpty()){
+                        System.out.println("\nThere isn't any employee registered!");
+                    }
+                    else{
+                        System.out.println("########## List of all employees ##########"); 
+                        for(int i = 0; i < employee.size();i++){  
+                            Employees aux = employee.get(i);
+                            System.out.println("[ID]- "+ aux.getId()+"\n[Name] - "+aux.getName()+
+                            "\n[Address] - "+ aux.getAddress()+
+                            "\n[Is in syndicate] -"+ aux.getSyndicate()+
+                            "\n[Employee Type] - "+ aux.getEmployeeType()+
+                            "\n[Payment way] - "+ aux.getPaymentWay()+
+                            "\n[Worked time] - "+ aux.getWorkedhours());
+                            System.out.println("---------------------------------------"); 
+                        }
                     }
                     break;
                 case 1:
@@ -58,6 +65,9 @@ public class InitialMenu{
                     remove.deleteEmployee(employee);
                     break;
                 case 3:
+                    SethoursEmployee hours = new SethoursEmployee();
+                    hours.settingWorkedTime(employee);
+                    
                     System.out.println("Post  time card");
                     break;
                 case 4:
