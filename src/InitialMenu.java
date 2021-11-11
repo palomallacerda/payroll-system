@@ -67,8 +67,6 @@ public class InitialMenu{
                 case 3:
                     SethoursEmployee hours = new SethoursEmployee();
                     hours.settingWorkedTime(employee);
-                    
-                    System.out.println("Post  time card");
                     break;
                 case 4:
                     System.out.println("Post sales result");
