@@ -3,7 +3,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.modes.Employees;
-import src.modes.TimeCard;
 
 public class InitialMenu{
     // Vamos inicializar o menu
@@ -50,6 +49,9 @@ public class InitialMenu{
                             "\n[Employee Type] - "+ aux.getEmployeeType()+
                             "\n[Payment way] - "+ aux.getPaymentWay()+
                             "\n[Worked time] - "+ aux.getWorkedhours());
+                            if(aux.getSale() > 0){
+                                System.out.println("[Sale] - "+aux.getSale());
+                            }
                             System.out.println("---------------------------------------"); 
                         }
                     }
@@ -69,7 +71,8 @@ public class InitialMenu{
                     hours.settingWorkedTime(employee);
                     break;
                 case 4:
-                    System.out.println("Post sales result");
+                    EmployeSale saleEmp = new EmployeSale();
+                    saleEmp.setSale(employee);
                     break;
                 case 5:
                     System.out.println("Post a service tax");

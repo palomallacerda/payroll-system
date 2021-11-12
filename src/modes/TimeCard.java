@@ -17,6 +17,7 @@ public class TimeCard {
     }
 
     public void setCheckIn(int checkIn){
+        
         this.checkIn = checkIn;
     }
     public int getCheckIn() {

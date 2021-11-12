@@ -1,5 +1,8 @@
 package src.modes;
+import java.util.LinkedList;
 import java.util.Scanner;
+
+import src.ultis.EmployeSale;
 
 public class Employees { //classe
     Scanner scan = new Scanner(System.in);
@@ -10,6 +13,7 @@ public class Employees { //classe
     private String address; 
     private String paymentWay; 
     private int workedhours;
+    private int sale;
     int id = 0; 
  
     public void setName() {
@@ -72,6 +76,13 @@ public class Employees { //classe
     public String getEmployeeType() {
         return this.employeeType;
     }
+
+    public void setSale(int saleE) {
+        this.sale = saleE; 
+    }
+    public int getSale() {
+        return sale;
+    }
     public void employee(String name, String address, int age, boolean syndicate,String employeeType, String paymentWay, int id){ //metodo
         this.name = name;
         this.syndicate = syndicate;
@@ -81,4 +92,5 @@ public class Employees { //classe
         this.paymentWay = paymentWay;
         this.id = id;
     } //Analisar se é viavel
+
 }

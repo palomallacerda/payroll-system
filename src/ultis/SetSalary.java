@@ -1,8 +1,7 @@
 package src.ultis;
 import src.modes.*;
 
-/*Setar o salario para cada empregado*/
-
+/*Setar o salario para cada empregado*/ 
 public class SetSalary {
     private double month;
     private double week;

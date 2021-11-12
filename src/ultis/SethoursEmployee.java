@@ -22,14 +22,31 @@ public class SethoursEmployee {
 
             if(employeesHour.getEmployeeType().equals("Hourly"))
             {
-                System.out.print("Please enter the time of cheackIn: ");
-                timeCard.setCheckIn(scan.nextInt());  
-        
-                System.out.print("Please enter the time of cheackOut ");
-                timeCard.setCheckOut(scan.nextInt());
-        
+                System.out.print("Please enter the time of cheackIn[0h - 24h]: ");
+                int checkin = scan.nextInt();
+                if((checkin < 1 || checkin >24)){
+                    System.out.println("Invalid Number, verify your checkin time!");
+                    settingWorkedTime(employee);
+                }
+                else{
+                    timeCard.setCheckIn(checkin);  
+                }
+                
+                System.out.print("Please enter the time of cheackOut [0h - 24h]: ");
+                int checkout = scan.nextInt();
+                if((checkout < 1 || checkout >24 || checkout < checkin )){
+                    System.out.println("Invalid Number, verify your checkout time!");
+                    settingWorkedTime(employee);
+                }
+                else{
+                    timeCard.setCheckOut(checkout);  
+                }
+                
+                
                 employeesHour.setWorkedhours(timeCard.getCheckOut()-timeCard.getCheckIn());
-                timeCard.setExeededTime(employeesHour.getWorkedhours()-8);
+                if((employeesHour.getWorkedhours()-8)>0){
+                    timeCard.setExeededTime(employeesHour.getWorkedhours()-8);
+                } 
                 System.out.println(employeesHour.getName()+" Worked "+(timeCard.getCheckOut()-timeCard.getCheckIn())+" hours");
                 System.out.println("\nGreat! the timecard has been added");
             }
