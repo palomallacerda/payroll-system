@@ -21,8 +21,14 @@ public class EmployeSale {
             if(employeesale.getName() != null){
                 System.out.print("Enter how many sale the employee did:\n--> ");
                 todaySale = scan.nextInt();
-                employeesale.setSale(todaySale);
-                System.out.println("\nSale added!");
+                if(todaySale < 0){
+                    System.out.println("Invalid input!");
+                    setSale(employee);
+                }
+                else{
+                    employeesale.setSale(todaySale+employeesale.getSale()); //quantidade de vendas mais as antigas
+                    System.out.println("\nSale "+ todaySale +" added!");
+                }
             }
         }
         
