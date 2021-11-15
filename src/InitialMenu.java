@@ -1,5 +1,6 @@
 package src;
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.modes.Employees;
@@ -8,6 +9,7 @@ public class InitialMenu{
     // Vamos inicializar o menu
     Scanner scan = new Scanner(System.in);
     LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
+    ArrayList<Integer> salesMade = new ArrayList<>();
     int id = 0;
 
 
@@ -45,12 +47,13 @@ public class InitialMenu{
                             Employees aux = employee.get(i);
                             System.out.println("[ID]- "+ aux.getId()+"\n[Name] - "+aux.getName()+
                             "\n[Address] - "+ aux.getAddress()+
-                            "\n[Is in syndicate] -"+ aux.getSyndicate()+
+                            "\n[Is in syndicate] - "+ aux.getSyndicate()+
                             "\n[Employee Type] - "+ aux.getEmployeeType()+
                             "\n[Payment way] - "+ aux.getPaymentWay()+
                             "\n[Worked time] - "+ aux.getWorkedhours());
-                            if(aux.getSale() > 0){
-                                System.out.println("[Sale] - "+aux.getSale());
+                            salesMade = aux.getSale();
+                           if(!salesMade.isEmpty()){
+                                System.out.println("[Sales] - "+salesMade);
                             }
                             System.out.println("---------------------------------------"); 
                         }

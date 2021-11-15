@@ -1,6 +1,11 @@
 package src.modes;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
+
+import javax.print.attribute.IntegerSyntax;
+
+import java.util.ArrayList;
 
 import src.ultis.EmployeSale;
 
@@ -13,8 +18,10 @@ public class Employees { //classe
     private String address; 
     private String paymentWay; 
     private int workedhours;
-    private int sale;
+    private ArrayList<Integer> sale = new ArrayList<>();
+    
     int id = 0; 
+    int i = 0;
  
     public void setName() {
         this.name = scan.next();  //Vê uma forma de retirar\n do scan (NextLine)
@@ -78,11 +85,13 @@ public class Employees { //classe
     }
 
     public void setSale(int saleE) {
-        this.sale = saleE; 
+        sale.add(i, saleE);
+        i+=1;
     }
-    public int getSale() {
-        return sale;
-    }
+
+     public ArrayList<Integer> getSale() {
+         return this.sale;    
+     }
     public void employee(String name, String address, int age, boolean syndicate,String employeeType, String paymentWay, int id){ //metodo
         this.name = name;
         this.syndicate = syndicate;

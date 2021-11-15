@@ -19,15 +19,16 @@ public class EmployeSale {
     
             employeesale = find.find(employee, id);
             if(employeesale.getName() != null){
-                System.out.print("Enter how many sale the employee did:\n--> ");
+                System.out.print("Enter how many sale the employee did today:\n--> ");
                 todaySale = scan.nextInt();
                 if(todaySale < 0){
                     System.out.println("Invalid input!");
                     setSale(employee);
                 }
                 else{
-                    employeesale.setSale(todaySale+employeesale.getSale()); //quantidade de vendas mais as antigas
+                    employeesale.setSale(todaySale); //quantidade de vendas mais as antigas
                     System.out.println("\nSale "+ todaySale +" added!");
+                 
                 }
             }
         }
