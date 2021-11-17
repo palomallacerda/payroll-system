@@ -1,6 +1,8 @@
 package src.ultis;
 import java.util.LinkedList;
 import java.util.Scanner;
+
+
 import src.modes.*;
 
 public class EmployeSale {
@@ -16,7 +18,6 @@ public class EmployeSale {
         else{
             System.out.print("Enter the employee ID: ");
             id = scan.nextInt();
-    
             employeesale = find.find(employee, id);
             if(employeesale.getName() != null){
                 System.out.print("Enter how many sale the employee did today:\n--> ");
@@ -30,6 +31,10 @@ public class EmployeSale {
                     System.out.println("\nSale "+ todaySale +" added!");
                  
                 }
+            }
+            else{
+                System.out.println("\nThis employee doesn't exist! TRY AGAIN!");
+                setSale(employee);
             }
         }
         

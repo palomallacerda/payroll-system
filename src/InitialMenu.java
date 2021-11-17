@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.modes.Employees;
-
+import src.modes.Syndicate;
 public class InitialMenu{
     // Vamos inicializar o menu
     Scanner scan = new Scanner(System.in);
+    Syndicate syndicate = new Syndicate();
     LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
     ArrayList<Integer> salesMade = new ArrayList<>();
     int id = 0;
-
-
+    
+    
     public void menu() {
        /*Verificar a viabilidade de talvez add mais uma opção 
        de salvar os dados em um arquivo separado*/
@@ -51,9 +52,8 @@ public class InitialMenu{
                             "\n[Employee Type] - "+ aux.getEmployeeType()+
                             "\n[Payment way] - "+ aux.getPaymentWay()+
                             "\n[Worked time] - "+ aux.getWorkedhours());
-                            salesMade = aux.getSale();
-                           if(!salesMade.isEmpty()){
-                                System.out.println("[Sales] - "+salesMade);
+                           if(!aux.getSale().isEmpty()){
+                                System.out.println("[Sales] - "+aux.getSale());
                             }
                             System.out.println("---------------------------------------"); 
                         }
@@ -63,7 +63,13 @@ public class InitialMenu{
                     AddEmployee add = new AddEmployee(); 
                     employee.add(add.addNewEmployee(id));
                     id += 1;
-                    System.out.println("\nGreat, the employee was added!");
+                    //Employees aux = employee.get(id);
+                    // if(aux.getSyndicate()){
+                    //     // syndicate.setEmployeeId(employee);   
+                    //     // System.out.println("--> "+ syndicate.getSyndicateId());
+                    //     System.out.println("\nGreat, the employee was added!");
+                        
+                    // }
                     break;
                 case 2:
                     RemoveEmployee remove = new RemoveEmployee();
@@ -78,10 +84,11 @@ public class InitialMenu{
                     saleEmp.setSale(employee);
                     break;
                 case 5:
-                    System.out.println("Post a service tax");
+                 
                     break;
                 case 6:
-                    System.out.println("Update employee details");
+                    UpdateEmployee updateEmp = new UpdateEmployee();
+                    updateEmp.Update();
                     break;
                 case 7:
                     System.out.println("Run today's payroll");

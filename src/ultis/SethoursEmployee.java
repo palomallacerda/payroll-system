@@ -1,6 +1,5 @@
 package src.ultis;
 import src.modes.*;
-import src.ultis.*;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -61,7 +60,7 @@ public class SethoursEmployee {
             }
         }
         else{
-            System.out.println("This employee's id doesn't exist\nTry Again!!");
+            System.out.println("\nThis employee's id doesn't exist\nTry Again!!\n");
             settingWorkedTime(employee);
         }
 

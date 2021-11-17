@@ -1,16 +1,11 @@
 package src.modes;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 
-import javax.print.attribute.IntegerSyntax;
-
-import java.util.ArrayList;
-
-import src.ultis.EmployeSale;
 
 public class Employees { //classe
     Scanner scan = new Scanner(System.in);
+    private ArrayList<Integer> sales = new ArrayList<>();
     private String name; 
     private String employeeType; //Mudar pra uma lista talvez?
     private int age;
@@ -18,7 +13,6 @@ public class Employees { //classe
     private String address; 
     private String paymentWay; 
     private int workedhours;
-    private ArrayList<Integer> sale = new ArrayList<>();
     
     int id = 0; 
     int i = 0;
@@ -45,10 +39,12 @@ public class Employees { //classe
     }
 
     public void setSyndicate(String syndicate) {
+        
         if(syndicate.equals("Y")){
             this.syndicate = true;
         }
         else this.syndicate = false;
+
     }
     public boolean getSyndicate() {
         return this.syndicate;
@@ -85,18 +81,18 @@ public class Employees { //classe
     }
 
     public void setSale(int saleE) {
-        sale.add(i, saleE);
+        sales.add(i, saleE);
         i+=1;
     }
 
      public ArrayList<Integer> getSale() {
-         return this.sale;    
+         return this.sales;    
      }
-    public void employee(String name, String address, int age, boolean syndicate,String employeeType, String paymentWay, int id){ //metodo
+    public void employee(String name, String address, ArrayList<Integer> sales, boolean syndicate,String employeeType, String paymentWay, int id){ //metodo
         this.name = name;
         this.syndicate = syndicate;
         this.address = address;
-        this.age = age;
+        this.sales = sales;
         this.employeeType = employeeType;
         this.paymentWay = paymentWay;
         this.id = id;
