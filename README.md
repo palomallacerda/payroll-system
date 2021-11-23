@@ -12,7 +12,7 @@ using the method they prefer, obeying various rates and taxes deducted from the 
 |     1    |  Add an employee               |<ul><li>[x]ok</li></ul> |
 |     2    |  Remove an employee            |<ul><li>[x]ok</li></ul> |
 |     3    |  Post a timecard               |<ul><li>[x]ok</li></ul> |
-|     4    |  Post sales result             |<ul><li>[x]ok</li></ul> |
+|     4    |  Post sales result             |<ul><li>[]ok</li></ul> |
 |     5    |  Post a servece tax            |<ul><li>[]ok</li></ul> |
 |     6    |  Update employee details       |<ul><li>[]ok</li></ul> |
 |     7    |  Run today's payroll           |<ul><li>[]ok</li></ul> | 

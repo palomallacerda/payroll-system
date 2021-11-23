@@ -9,6 +9,7 @@ public class SethoursEmployee {
     Scanner scan = new Scanner(System.in);
     FindEmployee findemp = new FindEmployee();
     Employees employeesHour = new Employees();
+    Hourly hourlyEmploy = new Hourly();
     TimeCard timeCard = new TimeCard();
     int id;
     /*Criar uma lista para os empregados que são horístas 
@@ -17,6 +18,7 @@ public class SethoursEmployee {
         System.out.println("Enter the employee ID");
         id = scan.nextInt();
         employeesHour = findemp.find(employee, id);
+        
         if(employeesHour.getName() != null){
 
             if(employeesHour.getEmployeeType().equals("Hourly"))
@@ -39,20 +41,27 @@ public class SethoursEmployee {
                 }
                 else{
                     timeCard.setCheckOut(checkout);  
+
                 }
                 
+                hourlyEmploy.setWorkedhours(timeCard.getCheckOut()-timeCard.getCheckIn());
                 
-                employeesHour.setWorkedhours(timeCard.getCheckOut()-timeCard.getCheckIn());
-                if((employeesHour.getWorkedhours()-8)>0){
-                    timeCard.setExeededTime(employeesHour.getWorkedhours()-8);
+                if((hourlyEmploy.getWorkedhours()-8)>0){
+                    timeCard.setExeededTime(hourlyEmploy.getWorkedhours()-8);
                 } 
-                System.out.println(employeesHour.getName()+" Worked "+(timeCard.getCheckOut()-timeCard.getCheckIn())+" hours");
+                
+                System.out.println("--------------------------------------------");
+                System.out.println("\n"+employeesHour.getName()+" Worked "+ hourlyEmploy.getWorkedhours()+" hours");
                 System.out.println("\nGreat! the timecard has been added");
+                System.out.println("--------------------------------------------");
             }
             else if(employeesHour.getEmployeeType().equals("Monthly Fixed")){
                    /*8 horas por dia 5 dias por semana*/
-                    System.out.println("\nThis employee is monthly fixed\nso works 8hours per day");
-                    employeesHour.setWorkedhours(8*20);
+
+                    System.out.println("--------------------------------------------");
+                    System.out.println("\nThis employee is monthly fixed\nSo works 8 hours per day");
+                    hourlyEmploy.setWorkedhours(8*20);
+                    System.out.println("--------------------------------------------");
             }
             else{
                 //assalariado, recebe por quantidade de vendas

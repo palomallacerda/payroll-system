@@ -7,6 +7,7 @@ import src.modes.*;
 
 public class EmployeSale {
     Employees employeesale = new Employees();
+    Salaried salariedEmploy = new Salaried();
     FindEmployee find = new FindEmployee();
     Scanner scan = new Scanner(System.in);
     int todaySale;
@@ -19,25 +20,31 @@ public class EmployeSale {
             System.out.print("Enter the employee ID: ");
             id = scan.nextInt();
             employeesale = find.find(employee, id);
-            if(employeesale.getName() != null){
-                System.out.print("Enter how many sale the employee did today:\n--> ");
+            if(employeesale.getName() != null || !employeesale.getEmployeeType().equals("Hourly")){
+                System.out.print("Enter how many sale "+ employeesale.getName()+" did today:\n--> ");
                 todaySale = scan.nextInt();
                 if(todaySale < 0){
                     System.out.println("Invalid input!");
                     setSale(employee);
                 }
                 else{
-                    employeesale.setSale(todaySale); //quantidade de vendas mais as antigas
+                    salariedEmploy.setSale(todaySale); //quantidade de vendas mais as antigas
+                    salariedEmploy.setAddress(employeesale.getAddress());
+                    salariedEmploy.setAge(employeesale.getAge());
+                    salariedEmploy.setId(employeesale.getId());
+                    salariedEmploy.setName(employeesale.getName());
+                    salariedEmploy.setPaymentWay(employeesale.getPaymentWay());
+                    salariedEmploy.setSyndicate(employeesale.getSyndicate());
+                    System.out.println("------------------------------");
                     System.out.println("\nSale "+ todaySale +" added!");
-                 
+                    System.out.println("------------------------------");
                 }
             }
             else{
-                System.out.println("\nThis employee doesn't exist! TRY AGAIN!");
+                System.out.println("\nInvalid!\n --- Try Again");
                 setSale(employee);
             }
         }
-        
     }
     
 }

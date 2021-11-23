@@ -6,8 +6,7 @@ public class TimeCard {
     private int checkIn; //entrada
     private int checkOut; //saida
     private int exeededTime; //Tempo a mais
-    
-    Employees employ = new Employees();
+
     Scanner scan = new Scanner(System.in);
     
     public TimeCard(){ //método construtor

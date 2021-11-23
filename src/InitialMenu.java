@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.modes.Employees;
+import src.modes.Hourly;
 import src.modes.Syndicate;
+
 public class InitialMenu{
     // Vamos inicializar o menu
     Scanner scan = new Scanner(System.in);
@@ -12,7 +14,6 @@ public class InitialMenu{
     LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
     ArrayList<Integer> salesMade = new ArrayList<>();
     int id = 0;
-    
     
     public void menu() {
        /*Verificar a viabilidade de talvez add mais uma opção 
@@ -44,32 +45,16 @@ public class InitialMenu{
                     }
                     else{
                         System.out.println("########## List of all employees ##########"); 
-                        for(int i = 0; i < employee.size();i++){  
-                            Employees aux = employee.get(i);
-                            System.out.println("[ID]- "+ aux.getId()+"\n[Name] - "+aux.getName()+
-                            "\n[Address] - "+ aux.getAddress()+
-                            "\n[Is in syndicate] - "+ aux.getSyndicate()+
-                            "\n[Employee Type] - "+ aux.getEmployeeType()+
-                            "\n[Payment way] - "+ aux.getPaymentWay()+
-                            "\n[Worked time] - "+ aux.getWorkedhours());
-                           if(!aux.getSale().isEmpty()){
-                                System.out.println("[Sales] - "+aux.getSale());
-                            }
-                            System.out.println("---------------------------------------"); 
+                        for (Employees employe : employee) {
+                            employe.printEmployee();
                         }
+
                     }
                     break;
                 case 1:
                     AddEmployee add = new AddEmployee(); 
                     employee.add(add.addNewEmployee(id));
                     id += 1;
-                    //Employees aux = employee.get(id);
-                    // if(aux.getSyndicate()){
-                    //     // syndicate.setEmployeeId(employee);   
-                    //     // System.out.println("--> "+ syndicate.getSyndicateId());
-                    //     System.out.println("\nGreat, the employee was added!");
-                        
-                    // }
                     break;
                 case 2:
                     RemoveEmployee remove = new RemoveEmployee();
