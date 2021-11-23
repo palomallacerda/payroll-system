@@ -22,7 +22,9 @@ public class Salaried extends Employees{
         "\n[Address] - "+ super.getAddress()+
         "\n[Is in syndicate] - "+ super.getSyndicate()+
         "\n[Employee Type] - "+ super.getEmployeeType()+
-        "\n[Payment way] - "+ super.getPaymentWay();
+        "\n[Payment way] - "+ super.getPaymentWay()+
+        "\n[Sales]-" +getSale()+
+        "\n--------------------------------------------";
     }
 
 }

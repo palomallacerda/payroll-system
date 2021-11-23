@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.modes.Employees;
-import src.modes.Hourly;
+
 import src.modes.Syndicate;
 
 public class InitialMenu{
@@ -45,10 +45,8 @@ public class InitialMenu{
                     }
                     else{
                         System.out.println("########## List of all employees ##########"); 
-                        for (Employees employe : employee) {
-                            employe.printEmployee();
-                        }
-
+                        ListAll list = new ListAll();
+                        list.listEmploy(employee);
                     }
                     break;
                 case 1:

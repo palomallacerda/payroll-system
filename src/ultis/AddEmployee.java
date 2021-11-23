@@ -17,7 +17,7 @@ public class AddEmployee {
     public Employees addNewEmployee(int id){
         System.out.println("\n############ Enter the employee infomation #################");
         while(true){
-            System.out.println("\nEmployee type:\n[1] - Hourly\n[2] - Salaried\n[3] - Commissioned");
+            System.out.println("\nEmployee type:\n[1] - Hourly\n[2] - Monthly Fixed\n[3] - Commissioned");
             System.out.print("--> ");
             int key = scann.nextInt();
             if(key == 1) {  

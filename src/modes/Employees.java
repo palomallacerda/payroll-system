@@ -1,12 +1,11 @@
 package src.modes;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Employees { //classe
     Scanner scan = new Scanner(System.in);
     protected String name; 
-    protected String employeeType; //Mudar pra uma lista talvez?
+    protected String employeeType;
     protected int age;
     protected boolean syndicate;
     protected String address; 
@@ -33,7 +32,6 @@ public class Employees { //classe
         this.syndicate = syn;
     }
     public void setSyndicate(String syndicate) {
-        
         if(syndicate.equals("Y")){
             this.syndicate = true;
         }

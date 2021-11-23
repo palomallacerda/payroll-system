@@ -1,19 +1,24 @@
 package src.modes;
 
-// import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class Hourly extends Employees{
     private int workedhours;
-    // ArrayList <TimeCard> timeCard = new ArrayList<>();
+    ArrayList <Integer> timeCard = new ArrayList<>();
     
     public Hourly(){
         workedhours = 0;
     }
     public void setWorkedhours(int workedhours) {
         this.workedhours = workedhours;
+        setTimeCard(workedhours);
     }
     public int getWorkedhours() {
         return this.workedhours;
+    }
+
+    public void setTimeCard(int workedhours) {
+        timeCard.add(workedhours);
     }
         
     public String listHourlyEmployee(){
@@ -22,7 +27,9 @@ public class Hourly extends Employees{
         "\n[Is in syndicate] - "+ super.getSyndicate()+
         "\n[Employee Type] - "+ super.getEmployeeType()+
         "\n[Payment way] - "+ super.getPaymentWay()+
-        "\n[Worked hours]"+ this.getWorkedhours();
+        "\n[Worked hours]- "+ this.getWorkedhours()+
+        "\n[TimeCard] - "+ this.timeCard+
+        "\n-------------------------------------";
     }
 
     

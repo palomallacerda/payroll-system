@@ -1,7 +1,6 @@
 package src;
 import java.util.Scanner;
-import src.modes.*;
-import src.ultis.*;
+
 
 public class UpdateEmployee {
     public void Update(){

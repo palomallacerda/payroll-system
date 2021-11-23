@@ -28,6 +28,7 @@ public class EmployeSale {
                     setSale(employee);
                 }
                 else{
+
                     salariedEmploy.setSale(todaySale); //quantidade de vendas mais as antigas
                     salariedEmploy.setAddress(employeesale.getAddress());
                     salariedEmploy.setAge(employeesale.getAge());
@@ -35,6 +36,7 @@ public class EmployeSale {
                     salariedEmploy.setName(employeesale.getName());
                     salariedEmploy.setPaymentWay(employeesale.getPaymentWay());
                     salariedEmploy.setSyndicate(employeesale.getSyndicate());
+                   
                     System.out.println("------------------------------");
                     System.out.println("\nSale "+ todaySale +" added!");
                     System.out.println("------------------------------");
