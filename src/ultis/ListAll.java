@@ -27,8 +27,7 @@ public class ListAll {
                 for (Employees employe : employees) {
                     if(employe.getEmployeeType().equals("Hourly")){
                         hourlyEmploy = (Hourly) employe;
-                        System.out.println(hourlyEmploy.listHourlyEmployee());
-                        
+                        hourlyEmploy.listHourlyEmployee();
                     }
                 }
                 break;
@@ -36,7 +35,7 @@ public class ListAll {
                 for (Employees employe : employees) {
                     if(employe.getEmployeeType().equals("Monthly Fixed") || employe.getEmployeeType().equals("Commmission")){
                         salariedEmploy = (Salaried) employe;
-                        System.out.println(salariedEmploy.listSalaried());
+                        salariedEmploy.listSalaried();
                     }
                 }
                 break;

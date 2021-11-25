@@ -1,5 +1,6 @@
-package src.ultis;
+package src.ultis.functions;
 import src.modes.*;
+import src.ultis.FindEmployee;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -17,20 +18,18 @@ public class SethoursEmployee {
     public void settingWorkedTime(LinkedList <Employees> employee){
         System.out.println("Enter the employee ID");
         id = scan.nextInt();
-        employeesHour = findemp.find(employee, id);
+        scan.nextLine();
+        hourlyEmploy = findemp.findHourly(employee, id);
         
-        if(employeesHour.getName() != null){
+        if(hourlyEmploy.getName() != null){ //validando se retornou vazio
 
-            if(employeesHour.getEmployeeType().equals("Hourly"))
+            if(hourlyEmploy.getEmployeeType().equals("Hourly"))
             {
                 System.out.print("Please enter the time of cheackIn[0h - 24h]: ");
                 int checkin = scan.nextInt();
                 if((checkin < 1 || checkin >24)){
                     System.out.println("Invalid Number, verify your checkin time!");
                     settingWorkedTime(employee);
-                }
-                else{
-                    timeCard.setCheckIn(checkin);  
                 }
                 
                 System.out.print("Please enter the time of cheackOut [0h - 24h]: ");
@@ -39,39 +38,32 @@ public class SethoursEmployee {
                     System.out.println("Invalid Number, verify your checkout time!");
                     settingWorkedTime(employee);
                 }
-                else{
-                    timeCard.setCheckOut(checkout);  
+                
 
-                }
+                timeCard.setWorkedhours(checkin, checkout);
                 
-                hourlyEmploy.setWorkedhours(timeCard.getCheckOut()-timeCard.getCheckIn());
-                
-                if((hourlyEmploy.getWorkedhours()-8)>0){
-                    timeCard.setExeededTime(hourlyEmploy.getWorkedhours()-8);
+                if((timeCard.getWorkedhours()-8)>0){ //Trabalhou mais que 8 horas rebece extra
+                    timeCard.setExeededTime();
                 } 
                 
                 System.out.println("--------------------------------------------");
-                System.out.println("\n"+employeesHour.getName()+" Worked "+ hourlyEmploy.getWorkedhours()+" hours");
+                System.out.println("\n"+hourlyEmploy.getName()+" Worked "+ timeCard.getWorkedhours()+" hours");
+                if(timeCard.getExeededTime()>0){
+                    System.out.println("Exeeded hours: "+timeCard.getExeededTime());
+                }
+                hourlyEmploy.setTimeCard(timeCard); //setando o array de timecard
                 System.out.println("\nGreat! the timecard has been added");
                 System.out.println("--------------------------------------------");
             }
-            else if(employeesHour.getEmployeeType().equals("Monthly Fixed")){
-                   /*8 horas por dia 5 dias por semana*/
-
-                    System.out.println("--------------------------------------------");
-                    System.out.println("\nThis employee is monthly fixed\nSo works 8 hours per day");
-                    hourlyEmploy.setWorkedhours(8*20);
-                    System.out.println("--------------------------------------------");
-            }
             else{
                 //assalariado, recebe por quantidade de vendas
-                System.out.println("This employee is commmissioned, it hasn't fixed hours!");
+                System.out.println("This employee does not has fixed hours!");
             }
         }
         else{
             System.out.println("\nThis employee's id doesn't exist\nTry Again!!\n");
-            settingWorkedTime(employee);
         }
 
     }
+
 }

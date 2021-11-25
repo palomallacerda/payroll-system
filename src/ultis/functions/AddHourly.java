@@ -1,4 +1,4 @@
-package src.ultis;
+package src.ultis.functions;
 import src.modes.*;
 import java.util.Scanner;
 

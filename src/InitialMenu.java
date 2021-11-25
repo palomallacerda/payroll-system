@@ -1,8 +1,13 @@
 package src;
 import java.util.LinkedList;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
+import src.ultis.functions.AddEmployee;
+import src.ultis.functions.SetEmployeSale;
+import src.ultis.functions.RemoveEmployee;
+import src.ultis.functions.SethoursEmployee;
 import src.modes.Employees;
 
 import src.modes.Syndicate;
@@ -15,7 +20,7 @@ public class InitialMenu{
     ArrayList<Integer> salesMade = new ArrayList<>();
     int id = 0;
     
-    public void menu() {
+    public void menu() throws ParseException {
        /*Verificar a viabilidade de talvez add mais uma opção 
        de salvar os dados em um arquivo separado*/
         while(true){ 
@@ -63,7 +68,7 @@ public class InitialMenu{
                     hours.settingWorkedTime(employee);
                     break;
                 case 4:
-                    EmployeSale saleEmp = new EmployeSale();
+                    SetEmployeSale saleEmp = new SetEmployeSale();
                     saleEmp.setSale(employee);
                     break;
                 case 5:

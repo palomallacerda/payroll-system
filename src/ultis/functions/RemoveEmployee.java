@@ -1,8 +1,9 @@
-package src.ultis;
+package src.ultis.functions;
 
 import java.util.LinkedList;
 import java.util.Scanner;
 import src.modes.Employees;
+import src.ultis.FindEmployee;
 
 public class RemoveEmployee {
 

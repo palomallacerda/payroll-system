@@ -1,4 +1,4 @@
-package src;
+package src.ultis;
 import java.util.Scanner;
 
 

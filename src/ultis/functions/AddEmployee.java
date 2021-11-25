@@ -1,8 +1,9 @@
-package src.ultis;
+package src.ultis.functions;
 import java.util.Scanner;
 import src.modes.Employees;
 import src.modes.Hourly;
 import src.modes.Salaried;
+import src.ultis.SetSalary;
 
 public class AddEmployee {
     
