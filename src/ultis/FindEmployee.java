@@ -3,6 +3,7 @@ import java.util.LinkedList;
 import src.modes.Employees;
 import src.modes.Hourly;
 import src.modes.Salaried;
+import src.modes.Syndicate;
 
 public class FindEmployee {
     public Employees find(LinkedList <Employees> employeeFind, int id){
@@ -51,4 +52,20 @@ public class FindEmployee {
         return employee;
     }
 
+    public Syndicate findSyndicate(LinkedList <Syndicate> syndEmp, int id){
+        Syndicate employee = new Syndicate();
+        int flag = 0;
+        for (int i = 0; i < syndEmp.size(); i++) {
+            Syndicate aux = syndEmp.get(i);
+            if(aux.getSyndicateId() == id){
+                employee = aux;
+                flag+=1;
+            }
+        }
+        if(flag == 0){
+            System.out.println("Employee not found");
+            employee.setSyndicateId(-500, -5000);
+        } 
+        return employee;
+    }
 }

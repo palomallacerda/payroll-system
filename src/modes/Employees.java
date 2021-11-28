@@ -10,10 +10,16 @@ public class Employees { //classe
     protected boolean syndicate;
     protected String address; 
     protected String paymentWay; 
+    private boolean flag = false;
     
     int id = 0; 
  
-    
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    public boolean getFlag(){
+        return this.flag;
+    }
     public void setName(String name) {
         this.name = name;  //Vê uma forma de retirar\n do scan (NextLine)
     }

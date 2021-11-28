@@ -13,8 +13,7 @@ public class Salaried extends Employees{
     int i = 0, j = 0;
     public void setSale(int saleE) {
         sales.add(i, saleE);
-        i+=1;
-        //Apenas os comissionados lançam vendas
+        i+=1; //Apenas os comissionados lançam vendas
     }
     
     public ArrayList<Integer> getSale() {

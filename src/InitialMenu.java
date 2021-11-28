@@ -1,12 +1,13 @@
 package src;
 import java.util.LinkedList;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.ultis.functions.AddEmployee;
+import src.ultis.functions.AddSyndicate;
 import src.ultis.functions.SetEmployeSale;
 import src.ultis.functions.RemoveEmployee;
+import src.ultis.functions.ServiceTax;
 import src.ultis.functions.SethoursEmployee;
 import src.modes.Employees;
 
@@ -15,9 +16,8 @@ import src.modes.Syndicate;
 public class InitialMenu{
     // Vamos inicializar o menu
     Scanner scan = new Scanner(System.in);
-    Syndicate syndicate = new Syndicate();
     LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
-    ArrayList<Integer> salesMade = new ArrayList<>();
+    LinkedList<Syndicate> syndicates = new LinkedList<>();
     int id = 0;
     
     public void menu() throws ParseException {
@@ -40,7 +40,7 @@ public class InitialMenu{
             System.out.println("[9] - Scheduel payment");
             System.out.println("[10] - Create a new Scheduel payment");
             System.out.println("[11] - Leave\n");
-            System.err.print("--> ");
+            System.out.print("--> ");//system.err
             int action = scan.nextInt();
      
             switch (action) {
@@ -51,13 +51,15 @@ public class InitialMenu{
                     else{
                         System.out.println("########## List of all employees ##########"); 
                         ListAll list = new ListAll();
-                        list.listEmploy(employee);
+                        list.listEmploy(employee, syndicates);
                     }
                     break;
                 case 1:
                     AddEmployee add = new AddEmployee(); 
                     employee.add(add.addNewEmployee(id));
                     id += 1;
+                    AddSyndicate addSyndi = new AddSyndicate();
+                    syndicates = addSyndi.AddNewEmploy(employee, syndicates);
                     break;
                 case 2:
                     RemoveEmployee remove = new RemoveEmployee();
@@ -72,7 +74,13 @@ public class InitialMenu{
                     saleEmp.setSale(employee);
                     break;
                 case 5:
-                 
+                    if(syndicates.isEmpty()){
+                        System.out.println("There isn't any syndicate member");    
+                    }
+                    else{
+                        ServiceTax tax = new ServiceTax();
+                        syndicates = tax.addServiceTax(employee,syndicates);
+                    }
                     break;
                 case 6:
                     UpdateEmployee updateEmp = new UpdateEmployee();
