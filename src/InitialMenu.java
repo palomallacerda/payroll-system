@@ -84,7 +84,7 @@ public class InitialMenu{
                     break;
                 case 6:
                     UpdateEmployee updateEmp = new UpdateEmployee();
-                    updateEmp.Update();
+                    employee = updateEmp.Update(employee, syndicates);
                     break;
                 case 7:
                     System.out.println("Run today's payroll");
