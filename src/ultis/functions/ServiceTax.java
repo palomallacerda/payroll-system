@@ -14,6 +14,7 @@ public class ServiceTax {
     FindEmployee find = new FindEmployee();
     double tax;
     int syndId;
+    
     public LinkedList<Syndicate> addServiceTax(LinkedList <Employees> employe, LinkedList<Syndicate> syndEmp){
         Syndicate syndicated = new Syndicate();
         System.out.println("Enter the Syndicate Id: ");

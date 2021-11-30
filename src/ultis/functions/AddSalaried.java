@@ -1,5 +1,7 @@
 package src.ultis.functions;
 import java.util.Scanner;
+
+import src.modes.Employees;
 import src.modes.Salaried;
 
 public class AddSalaried {
@@ -50,5 +52,32 @@ public class AddSalaried {
 
         return salariedEmploy;
     
+    }
+
+    public Salaried updateSalariedMonthly(Employees auxEmployees){
+        salariedEmploy.setAddress(auxEmployees.getAddress());
+        salariedEmploy.setName(auxEmployees.getName());
+        salariedEmploy.setAge(auxEmployees.getAge());
+        salariedEmploy.setEmployeeType("Monthly Fixed");
+        salariedEmploy.setId(auxEmployees.getId());
+        salariedEmploy.setFlag(auxEmployees.getFlag());
+        salariedEmploy.setPaymentWay(auxEmployees.getPaymentWay());
+        salariedEmploy.setSyndicate(auxEmployees.getSyndicate());
+
+        return salariedEmploy;
+    }
+
+
+    public Salaried updateCommissioned(Employees auxEmployees){
+        salariedEmploy.setAddress(auxEmployees.getAddress());
+        salariedEmploy.setName(auxEmployees.getName());
+        salariedEmploy.setAge(auxEmployees.getAge());
+        salariedEmploy.setEmployeeType("Commmission");
+        salariedEmploy.setId(auxEmployees.getId());
+        salariedEmploy.setFlag(auxEmployees.getFlag());
+        salariedEmploy.setPaymentWay(auxEmployees.getPaymentWay());
+        salariedEmploy.setSyndicate(auxEmployees.getSyndicate());
+
+        return salariedEmploy;
     }
 }
