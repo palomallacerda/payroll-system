@@ -21,19 +21,26 @@ public class ServiceTax {
         syndId = scan.nextInt();
 
         syndicated = find.findSyndicate(syndEmp, syndId);
-        if(syndicated.getSyndicateId()>0){
-            System.out.println("Enter the Tax Value: ");
-            tax = scan.nextDouble();           
-            syndicated.setServiceTax(tax);
-            for(int i = 0; i<syndEmp.size(); i++){
-                if(syndicated.getSyndicateId() == syndEmp.get(i).getSyndicateId()){
-                    syndEmp.get(i).setServiceTax(tax);
-                    break;
-                }
-            }
-
-            System.out.println("Tax added!");
+        if(!syndicated.getFlag()){
+            System.out.println("Try another Id");
+            addServiceTax(employe, syndEmp);
         }
+        else{
+            if(syndicated.getSyndicateId()>0){
+                System.out.println("Enter the Tax Value: ");
+                tax = scan.nextDouble();           
+                syndicated.setServiceTax(tax);
+                for(int i = 0; i<syndEmp.size(); i++){
+                    if(syndicated.getSyndicateId() == syndEmp.get(i).getSyndicateId()){
+                        syndEmp.get(i).setServiceTax(tax);
+                        break;
+                    }
+                }
+    
+                System.out.println("Tax added!");
+            }
+        }
+        
         return syndEmp;
     }
 }

@@ -64,6 +64,7 @@ public class FindEmployee {
         }
         if(flag == 0){
             System.out.println("Employee not found");
+            
             employee.setSyndicateId(-500, -5000);
         } 
         return employee;
