@@ -38,6 +38,10 @@ public class ListAll {
                     if(employe.getEmployeeType().equals("Monthly Fixed") || employe.getEmployeeType().equals("Commmission")){
                         salariedEmploy = (Salaried) employe;
                         salariedEmploy.listSalaried();
+                        break;
+                    }
+                    else{
+                        System.out.println("There is not any employee");
                     }
                 }
                 break;

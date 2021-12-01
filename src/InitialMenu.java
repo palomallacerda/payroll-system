@@ -9,6 +9,7 @@ import src.ultis.functions.SetEmployeSale;
 import src.ultis.functions.RemoveEmployee;
 import src.ultis.functions.ServiceTax;
 import src.ultis.functions.SethoursEmployee;
+import src.ultis.functions.UpdateEmployee;
 import src.modes.Employees;
 
 import src.modes.Syndicate;
@@ -40,7 +41,7 @@ public class InitialMenu{
             System.out.println("[9] - Scheduel payment");
             System.out.println("[10] - Create a new Scheduel payment");
             System.out.println("[11] - Leave\n");
-            System.out.print("--> ");//system.err
+            System.out.print("--> ");
             int action = scan.nextInt();
      
             switch (action) {
@@ -84,7 +85,7 @@ public class InitialMenu{
                     break;
                 case 6:
                     UpdateEmployee updateEmp = new UpdateEmployee();
-                    updateEmp.Update();
+                    updateEmp.Update(employee, syndicates);
                     break;
                 case 7:
                     System.out.println("Run today's payroll");

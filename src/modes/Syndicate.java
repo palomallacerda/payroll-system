@@ -36,6 +36,10 @@ public class Syndicate {
     public double getSyndicateTax() {
         return this.syndicateTax;
     }
+
+    public void setSyndicateId(int id) {
+        this.syndicateId = id;
+    }
     public void setSyndicateId(int age, int id) {
         this.syndicateId = (age*id)+1;
     }

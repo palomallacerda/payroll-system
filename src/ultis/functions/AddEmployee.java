@@ -1,4 +1,5 @@
 package src.ultis.functions;
+import java.util.LinkedList;
 import java.util.Scanner;
 import src.modes.Employees;
 import src.modes.Hourly;
@@ -42,5 +43,32 @@ public class AddEmployee {
         }
         employee.setId(id);
         return employee;
+    }
+
+    public void updateNewEmployee(Employees empAux, LinkedList<Employees> employeeAdd){
+        System.out.println("Set the employee type that you would like to put:");
+        while(true){
+            System.out.println("\nEmployee type:\n[1] - Hourly\n[2] - Monthly Fixed\n[3] - Commissioned");
+            System.out.print("--> ");
+            int key = scann.nextInt();
+            if(key == 1) {  
+                hourlyEmploy = addHourly.updateHourly(empAux);
+                employeeAdd.add(hourlyEmploy);
+                System.out.println(empAux.getEmployeeType() + " Changed to Hourly");
+                break;
+            }else if(key == 2){
+                salariedEmploy = addSalaried.updateSalariedMonthly(empAux);
+                employeeAdd.add(salariedEmploy);
+                System.out.println(empAux.getEmployeeType() + " Changed to Monthly Fixed");
+                break;
+            }else if(key == 3){
+                salariedEmploy = addSalaried.updateCommissioned(empAux);
+                employeeAdd.add(salariedEmploy);
+                System.out.println(empAux.getEmployeeType() + " Changed to Comissioned");
+                break;
+            }else{
+                System.out.println("Invalid input, Try again!");
+            }
+        }
     }
 }

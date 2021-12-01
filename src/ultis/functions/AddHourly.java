@@ -49,9 +49,20 @@ public class AddHourly {
                 System.out.println("Invalid input, Try again using upper case!");
             }
         }
+        return hourlyEmploy;
+    }
+
+    public Hourly updateHourly(Employees auxEmployees){
+        hourlyEmploy.setAddress(auxEmployees.getAddress());
+        hourlyEmploy.setName(auxEmployees.getName());
+        hourlyEmploy.setAge(auxEmployees.getAge());
+        hourlyEmploy.setEmployeeType("Hourly");
+        hourlyEmploy.setId(auxEmployees.getId());
+        hourlyEmploy.setFlag(auxEmployees.getFlag());
+        hourlyEmploy.setPaymentWay(auxEmployees.getPaymentWay());
+        hourlyEmploy.setSyndicate(auxEmployees.getSyndicate());
 
         return hourlyEmploy;
-    
     }
 
 }

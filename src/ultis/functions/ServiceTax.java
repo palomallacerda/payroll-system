@@ -14,25 +14,33 @@ public class ServiceTax {
     FindEmployee find = new FindEmployee();
     double tax;
     int syndId;
+    
     public LinkedList<Syndicate> addServiceTax(LinkedList <Employees> employe, LinkedList<Syndicate> syndEmp){
         Syndicate syndicated = new Syndicate();
         System.out.println("Enter the Syndicate Id: ");
         syndId = scan.nextInt();
 
         syndicated = find.findSyndicate(syndEmp, syndId);
-        if(syndicated.getSyndicateId()>0){
-            System.out.println("Enter the Tax Value: ");
-            tax = scan.nextDouble();           
-            syndicated.setServiceTax(tax);
-            for(int i = 0; i<syndEmp.size(); i++){
-                if(syndicated.getSyndicateId() == syndEmp.get(i).getSyndicateId()){
-                    syndEmp.get(i).setServiceTax(tax);
-                    break;
-                }
-            }
-
-            System.out.println("Tax added!");
+        if(!syndicated.getFlag()){
+            System.out.println("Try another Id");
+            addServiceTax(employe, syndEmp);
         }
+        else{
+            if(syndicated.getSyndicateId()>0){
+                System.out.println("Enter the Tax Value: ");
+                tax = scan.nextDouble();           
+                syndicated.setServiceTax(tax);
+                for(int i = 0; i<syndEmp.size(); i++){
+                    if(syndicated.getSyndicateId() == syndEmp.get(i).getSyndicateId()){
+                        syndEmp.get(i).setServiceTax(tax);
+                        break;
+                    }
+                }
+    
+                System.out.println("Tax added!");
+            }
+        }
+        
         return syndEmp;
     }
 }
