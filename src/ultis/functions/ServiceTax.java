@@ -36,8 +36,9 @@ public class ServiceTax {
                         break;
                     }
                 }
-    
-                System.out.println("Tax added!");
+                System.out.println("-----------------------------------");
+                System.out.println("          Tax Included!            ");
+                System.out.println("-----------------------------------");
             }
         }
         

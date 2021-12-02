@@ -66,7 +66,7 @@ public class RemoveEmployee {
             
     }
 
-    public void deleteSyndicate(LinkedList<Syndicate> employeeOff, int id){
+    public void deleteSyndicate(LinkedList<Syndicate> employeeOff, int syndicateId){
         
         if(employeeOff.isEmpty()){
             System.out.println("\nSorry, there isn't any employee register");
@@ -74,7 +74,7 @@ public class RemoveEmployee {
         else{
             while(true){
                 
-                employSynd = findEmp.findSyndicate(employeeOff, id);
+                employSynd = findEmp.findSyndicate(employeeOff, syndicateId);
                 
                 if(employSynd.getName() != null){
                     employeeOff.remove(employSynd);

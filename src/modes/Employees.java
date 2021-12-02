@@ -10,10 +10,16 @@ public class Employees { //classe
     protected boolean syndicate;
     protected String address; 
     protected String paymentWay; 
+    protected String paymentScheduel;
     private boolean flag = false;
     
     int id = 0; 
- 
+    public void setPaymentScheduel(String paymentScheduel) {
+        this.paymentScheduel = paymentScheduel;
+    }
+    public String getPaymentScheduel() {
+        return this.paymentScheduel;
+    }
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
@@ -83,7 +89,8 @@ public class Employees { //classe
         "\n[Address] - "+ this.getAddress()+
         "\n[Is in syndicate] - "+ this.getSyndicate()+
         "\n[Employee Type] - "+ this.getEmployeeType()+
-        "\n[Payment way] - "+ this.getPaymentWay());
+        "\n[Payment way] - "+ this.getPaymentWay()+
+        "\n[Payment Scheduel] - "+this.getPaymentScheduel());
         System.out.println("---------------------------------------"); 
        
     }
