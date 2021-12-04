@@ -38,13 +38,16 @@ public class ListAll {
                 break;
             case 3:
                 for (Employees employe : employees) {
-                    if(employe.getEmployeeType().equals("Monthly Fixed") || employe.getEmployeeType().equals("Commmission")){
+                    if(employe.getEmployeeType().equals("Monthly Fixed")){
                         salariedEmploy = (Salaried) employe;
                         salariedEmploy.listSalaried();
-                        break;
+                    }
+                    else if(employe.getEmployeeType().equals("Commmission")){
+                        salariedEmploy = (Salaried) employe;
+                        salariedEmploy.listSalaried();
                     }
                     else{
-                        System.out.println("There is not any employee");
+                        System.out.println("There isn't any employee");
                     }
                 }
                 break;

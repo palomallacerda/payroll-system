@@ -45,7 +45,10 @@ public class AddEmployee {
                 System.out.println("Invalid input, Try again!");
             }
         }
-        paySchedueles.defaultScheduel(scheduel);
+       
+        paySchedueles.defaultScheduel(scheduel, employee);    
+        
+        
         employee.setId(id);
         return employee;
     }

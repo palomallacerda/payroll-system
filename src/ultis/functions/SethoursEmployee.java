@@ -25,6 +25,7 @@ public class SethoursEmployee {
 
             if(hourlyEmploy.getEmployeeType().equals("Hourly"))
             {
+
                 System.out.print("Please enter the time of cheackIn[0h - 24h]: ");
                 int checkin = scan.nextInt();
                 if((checkin < 1 || checkin >24)){
@@ -41,16 +42,19 @@ public class SethoursEmployee {
                 
 
                 timeCard.setWorkedhours(checkin, checkout);
-                
+                timeCard.setToday();
+
                 if((timeCard.getWorkedhours()-8)>0){ //Trabalhou mais que 8 horas rebece extra
                     timeCard.setExeededTime();
                 } 
                 
                 System.out.println("--------------------------------------------");
+                System.out.println(">>>>>>> Today "+ timeCard.getToday()+ " <<<<<<<<");
                 System.out.println("\n"+hourlyEmploy.getName()+" Worked "+ timeCard.getWorkedhours()+" hours");
                 if(timeCard.getExeededTime()>0){
                     System.out.println("Exeeded hours: "+timeCard.getExeededTime());
                 }
+                
                 hourlyEmploy.setTimeCard(timeCard); //setando o array de timecard
                 System.out.println("\nGreat! the timecard has been added");
                 System.out.println("--------------------------------------------");

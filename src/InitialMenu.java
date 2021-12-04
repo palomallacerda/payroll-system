@@ -1,11 +1,11 @@
 package src;
 import java.util.LinkedList;
-import java.text.ParseException;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.ultis.functions.AddEmployee;
 import src.ultis.functions.AddSyndicate;
 import src.ultis.functions.PaymentScheduel;
+import src.ultis.functions.Payroll;
 import src.ultis.functions.SetEmployeSale;
 import src.ultis.functions.RemoveEmployee;
 import src.ultis.functions.ServiceTax;
@@ -22,10 +22,10 @@ public class InitialMenu{
     LinkedList<Syndicate> syndicates = new LinkedList<>();
     LinkedList<String> schedueles = new LinkedList<>();
     PaymentScheduel payScheduel = new PaymentScheduel();
-    
+    Payroll allPayroll = new Payroll();
     int id = 0;
     
-    public void menu() throws ParseException {
+    public void menu()  {
        /*Verificar a viabilidade de talvez add mais uma opção 
        de salvar os dados em um arquivo separado*/
         while(true){ 
@@ -92,7 +92,7 @@ public class InitialMenu{
                     updateEmp.Update(employee, syndicates);
                     break;
                 case 7:
-                    System.out.println("Run today's payroll");
+                    allPayroll.runningTodayPayrool(employee, syndicates, schedueles);
                     break;
                 case 8:
                     System.out.println("Undo/Redo");

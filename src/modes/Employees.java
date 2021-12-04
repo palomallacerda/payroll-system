@@ -14,18 +14,24 @@ public class Employees { //classe
     private boolean flag = false;
     
     int id = 0; 
+
+
     public void setPaymentScheduel(String paymentScheduel) {
         this.paymentScheduel = paymentScheduel;
     }
+    
     public String getPaymentScheduel() {
         return this.paymentScheduel;
     }
+    
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
+    
     public boolean getFlag(){
         return this.flag;
     }
+    
     public void setName(String name) {
         this.name = name;  //Vê uma forma de retirar\n do scan (NextLine)
     }
@@ -33,6 +39,7 @@ public class Employees { //classe
     public void setId(int id){
         this.id = id;
     }
+    
     public int getId() {
         return this.id;
     }
@@ -50,13 +57,16 @@ public class Employees { //classe
         else this.syndicate = false;
 
     }
+    
     public boolean getSyndicate() {
         return this.syndicate;
     }
+    
     public void setAddress(String address) {
         this.address = address;
         //verificar pois ele só lê a primeira linha
     }
+    
     public String getAddress() {
         return this.address;
     }
@@ -80,6 +90,7 @@ public class Employees { //classe
         this.employeeType = employeeType;
         //Criar forma de seleção para cada payment
     }
+    
     public String getEmployeeType() {
         return this.employeeType;
     }

@@ -17,15 +17,20 @@ public class PaymentScheduel {
     String changeScheduel;
     int option;
 
-    public void defaultScheduel(LinkedList<String> scheduel){
-        houry = "weekly 1 friday";  //toda semanan das sextas
-        scheduel.add(houry);
-    
-        comission = "monthly $"; //Ultimo dia do mês
-        scheduel.add(comission);
-    
-        salaried = "weekly 2 friday"; //a cada 2 semanas as sextas
-        scheduel.add(salaried);
+    public void defaultScheduel(LinkedList<String> scheduel, Employees employee){
+        if(employee.getEmployeeType().equals("Hourly")){
+            houry = "weekly 1 friday";  //toda semanan das sextas
+            scheduel.add(houry);
+        }
+        if(employee.getEmployeeType().equals("Commmission")){
+            salaried = "weekly 2 friday"; //a cada 2 semanas as sextas
+            scheduel.add(salaried);
+
+        }
+        if(employee.getEmployeeType().equals("Monthly Fixed")){
+            comission = "monthly $"; //Ultimo dia do mês
+            scheduel.add(comission);
+        }
     }
 
     public void newScheduel(LinkedList<String> schedueles){

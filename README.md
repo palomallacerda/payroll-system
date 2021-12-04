@@ -15,7 +15,7 @@ using the method they prefer, obeying various rates and taxes deducted from the 
 |     4    |  Post sales result             |<ul><li>[x]ok</li></ul> |
 |     5    |  Post a servece tax            |<ul><li>[x]ok</li></ul> |
 |     6    |  Update employee details       |<ul><li>[x]ok</li></ul> |
-|     7    |  Run today's payroll           |<ul><li>[]ok</li></ul> | 
+|     7    |  Run today's payroll           |<ul><li>[x]ok</li></ul> | 
 |     8    |  Undo/Redo                     |<ul><li>[]ok</li></ul> |
 |     9    |  Scheduel payment              |<ul><li>[x]ok</li></ul> | 
 |    10    |  Create a new Scheduel payment |<ul><li>[x]ok</li></ul> |
