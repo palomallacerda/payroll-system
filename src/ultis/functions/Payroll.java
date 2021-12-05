@@ -28,7 +28,7 @@ public class Payroll {
         ArrayList<Integer> sales = new ArrayList<>();
 
         System.out.println("############# Today's payroll is Loading #############");
-        System.out.println("\n >>>>>>>>>> Today is "+ LocalDate.now()+" <<<<<<<<<<");
+        System.out.println("\n >>>>>>>>>>>> Today is "+ LocalDate.now()+" <<<<<<<<<<<<");
         for (String auxScheduel : scheduel) {
             String[] scheduelDiv = auxScheduel.split(" "); //divide a string em partes
             
@@ -60,17 +60,48 @@ public class Payroll {
                         }
 
                     }
+                    else if(aux.getEmployeeType().equals("Monthly Fixed")){
+                        montlyPayment((Salaried)employ.get(i), syndicate);
+                        todayFlag  = true;
+                    }
                 }
             }
-            else if(scheduelDiv[0].equals("monthly")){
+            else if(scheduelDiv[0].equals("monthly")){//Pagamento mensal
                 for(int i = 0; i < employ.size();i++){
                     Employees aux = employ.get(i);
                     if(aux.getEmployeeType().equals("Monthly Fixed")){ //Recebe fixo
                          montlyPayment((Salaried)employ.get(i), syndicate);
                          todayFlag  = true;
                     }
+                    else if(aux.getEmployeeType().equals("Hourly")){//Recebe de acordo com as horas
+                        Hourly horista = (Hourly)employ.get(i);
+                        card = horista.getTimeCard();
+                        
+                        for(int j = 0; j<card.size(); j++){
+                            TimeCard auxCard = card.get(j);
+                            if(auxCard.getToday().equals(today)){ //Verificando se as horas foram hoje
+                                hourlyPayment(horista, syndicate);
+                                todayFlag  = true;
+                            }
+                        }
+                    }
+                    else if(aux.getEmployeeType().equals("Commmission")){ //Recebe de acordo com as vendas
+                        Salaried comissioned = (Salaried)employ.get(i);
+                        sales = comissioned.getSale();
+                        todaySales = comissioned.getSaleDate();
+                        for(int j = 0; j<todaySales.size(); j++){
+                            if(todaySales.get(j).toString().equals(today)){
+                                comissionedPayment(comissioned, syndicate);
+                                todayFlag  = true;
+                            }
+                        }
+
+                    }
                 }
-            } //Pagamento mensal
+            } 
+            else{
+                System.out.println("Not a valid Scheduel\n");
+            }
         }
         
         if(!todayFlag){
@@ -93,17 +124,23 @@ public class Payroll {
         }
         
         employe.setLastPayDay(laspayment);
-
+        int totalhours = 0;
         for(TimeCard auxtimeCard : listaCard){
             if(auxtimeCard.getExeededTime() != 0){
                 paymentValue += (auxtimeCard.getWorkedhours()*hour)+(auxtimeCard.getWorkedhours()*(hour*1.5));
+                totalhours += auxtimeCard.getWorkedhours();
+                totalhours += auxtimeCard.getExeededTime();
             }
             else{
                 paymentValue += (auxtimeCard.getWorkedhours()*hour);
+                totalhours += auxtimeCard.getWorkedhours();
+
             }
         }
         System.out.println("\n**********************************************************");
         System.out.println("\n|[Id] "+employe.getId()+" >[Name] "+employe.getName()+"\nThe payment value is "+ paymentValue);
+        System.out.println("\n>> Worked "+totalhours+" hours");
+        
         if(employe.getSyndicate()){
             hourlySynd = findSynd.findSyndicate(syndicate, (employe.getAge()*employe.getId())+1);
             paymentValue -= hourlySynd.getServiceTax();
@@ -111,7 +148,7 @@ public class Payroll {
             System.out.println("\nSyndicate fee applyed");
             System.out.println("Now total payment is "+paymentValue);
         }
-        System.out.println("\n >> The method of payment is "+ employe.getPaymentWay());
+        System.out.println("\n>> The method of payment is "+ employe.getPaymentWay());
         System.out.println("\n**********************************************************\n");
     
     }
@@ -124,13 +161,15 @@ public class Payroll {
         Syndicate syndComisioned;
 
         allSales = comissioned.getSale();
-        
+        int amount = 0;
         for(int i = 0; i< allSales.size(); i++){
             double auxsale = allSales.get(i);
             paymentValue += sale*auxsale;
+            amount += allSales.get(i);
         }
         System.out.println("\n*********************************************************");
         System.out.println("\n[Id] "+comissioned.getId()+" |[Name] "+comissioned.getName()+"\nPayment value is "+ paymentValue);
+        System.out.println("\n>> Has done "+amount+" sales");
         if(comissioned.getSyndicate()){
             syndComisioned = findSynd.findSyndicate(syndicate, (comissioned.getAge()*comissioned.getId())+1);
             paymentValue -= syndComisioned.getServiceTax();
@@ -138,7 +177,7 @@ public class Payroll {
             System.out.println("\n~~ Syndicate fee applyed");
             System.out.println("~~ Now total payment is "+paymentValue);
         }
-        System.out.println("\n > The method of payment is "+ comissioned.getPaymentWay());
+        System.out.println("\n>> The method of payment is "+ comissioned.getPaymentWay());
         System.out.println("\n*********************************************************\n");
     }
 

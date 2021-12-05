@@ -38,11 +38,7 @@ public class ListAll {
                 break;
             case 3:
                 for (Employees employe : employees) {
-                    if(employe.getEmployeeType().equals("Monthly Fixed")){
-                        salariedEmploy = (Salaried) employe;
-                        salariedEmploy.listSalaried();
-                    }
-                    else if(employe.getEmployeeType().equals("Commmission")){
+                    if(employe.getEmployeeType().equals("Monthly Fixed")|| employe.getEmployeeType().equals("Commmission")){
                         salariedEmploy = (Salaried) employe;
                         salariedEmploy.listSalaried();
                     }
@@ -64,10 +60,12 @@ public class ListAll {
             case 5:
                 if(scheduel.isEmpty()){
                     System.out.println("Empty....");
+                   
                 }
                 else{
                     paymentScheduel.listAvalibleSchedules(scheduel);
                 }   
+                break;
             default:
                 break;
         }

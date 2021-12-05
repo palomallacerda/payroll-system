@@ -6,6 +6,7 @@ import java.util.Scanner;
 import src.modes.Employees;
 import src.modes.Syndicate;
 import src.ultis.FindEmployee;
+import src.ultis.ListAll;
 
 public class ServiceTax {
     LinkedList <Syndicate> syndEmploy = new LinkedList<>();
@@ -17,13 +18,26 @@ public class ServiceTax {
     
     public LinkedList<Syndicate> addServiceTax(LinkedList <Employees> employe, LinkedList<Syndicate> syndEmp){
         Syndicate syndicated = new Syndicate();
-        System.out.println("Enter the Syndicate Id: ");
+        System.out.println("Enter the >[Syndicate]< Id: ");
         syndId = scan.nextInt();
 
         syndicated = find.findSyndicate(syndEmp, syndId);
         if(!syndicated.getFlag()){
-            System.out.println("Try another Id");
-            addServiceTax(employe, syndEmp);
+            System.out.println("Opps, Would you like to");
+            System.out.println("[1] - List all syndicates members");
+            System.out.println("[2] - exit");
+            int key = scan.nextInt();
+            if(key == 2){
+                System.out.println("Leaving....");
+                return syndEmp;
+            }
+            else if(key == 1){
+                for(int i = 0; i<syndEmp.size();i++){
+                    syndEmp.get(i).listSyndicate();
+                }
+
+                addServiceTax(employe, syndEmp);
+            }
         }
         else{
             if(syndicated.getSyndicateId()>0){

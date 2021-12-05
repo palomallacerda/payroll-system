@@ -88,8 +88,13 @@ public class InitialMenu{
                     }
                     break;
                 case 6:
-                    UpdateEmployee updateEmp = new UpdateEmployee();
-                    updateEmp.Update(employee, syndicates);
+                    if(!employee.isEmpty()){
+                        UpdateEmployee updateEmp = new UpdateEmployee();
+                        updateEmp.Update(employee, syndicates);
+                    }
+                    else{
+                        System.out.println("There is not any employee to update!");
+                    }
                     break;
                 case 7:
                     allPayroll.runningTodayPayrool(employee, syndicates, schedueles);
