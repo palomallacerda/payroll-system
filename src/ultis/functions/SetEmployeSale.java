@@ -1,6 +1,6 @@
 package src.ultis.functions;
 
-import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -13,27 +13,22 @@ public class SetEmployeSale {
     FindEmployee find = new FindEmployee();
     Scanner scan = new Scanner(System.in);
     int todaySale;
-    String date;
+    LocalDate date;
     int id;
 
-    public void setSale(LinkedList<Employees> employee) throws ParseException { // Lista e id
+    public void setSale(LinkedList<Employees> employee)  { // Lista e id
         if (employee.isEmpty()) {
             System.out.println("There isn't any employee to set a sale!");
         } else {
             System.out.print("Enter the employee ID: ");
             id = scan.nextInt();
             salariedEmploy = find.findSalaried(employee, id);
+            
             if (salariedEmploy.getName() != null || !salariedEmploy.getEmployeeType().equals("Hourly")) {
-                System.out.println("Enter the date [dd/MM/yyy]");
-                date = scan.next();
-
-                try {
-                    salariedEmploy.setDate(date);
-                } catch (ParseException ex) {
-                    ex.printStackTrace();
-                    setSale(employee);
-                }
-
+                
+                System.out.println("Today is "+ LocalDate.now()); 
+                salariedEmploy.setDate(LocalDate.now());
+                
                 System.out.print("Enter how many sale " + salariedEmploy.getName() + " did today:\n--> ");
                 todaySale = scan.nextInt();
                 if (todaySale < 0) {

@@ -1,5 +1,6 @@
 package src.modes;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class TimeCard {
@@ -7,7 +8,8 @@ public class TimeCard {
     private int checkOut; //saida
     private int workedhours;
     private int exeededTime; //Tempo a mais
-
+    private String today;
+    
     Scanner scan = new Scanner(System.in);
     
     public TimeCard(){ //método construtor
@@ -45,7 +47,14 @@ public class TimeCard {
         return this.exeededTime;
     }
 
+    public void setToday() {
+        this.today = LocalDate.now().toString();
+    }
+    public String getToday() {
+        return this.today;
+    }
     public void printTimecard(){
+        System.out.println("[Date] "+ this.getToday());
         System.out.println("[Cheack in] "+ this.getCheckIn());
         System.out.println("[Cheack Out] "+ this.getCheckOut());
         System.out.println("[ExeededTime] "+ this.getExeededTime());

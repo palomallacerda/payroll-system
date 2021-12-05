@@ -29,7 +29,7 @@ public class FindEmployee {
                 }
             }
             else{
-                System.out.println("Opss ERRO!");
+                employee.setName(null);
             }
 
         }
@@ -40,13 +40,20 @@ public class FindEmployee {
         Salaried employee = new Salaried();
         for (int i = 0; i < employeeFind.size(); i++) {
             Employees aux = employeeFind.get(i);
-            if(!aux.getEmployeeType().equals("Hourly")){
+            if(aux.getEmployeeType().equals("Commmission")){
+                if(aux.getId() == id){
+                    employee = (Salaried)aux;
+                }
+            }
+            else if(aux.getEmployeeType().equalsIgnoreCase("Monthly Fixed")){
                 if(aux.getId() == id){
                     employee = (Salaried)aux;
                 }
             }
             else{
-                System.out.println("Erro!");
+                System.out.println("THis employee was not found!");
+                
+                employee.setName(null);
             }
         }
         return employee;

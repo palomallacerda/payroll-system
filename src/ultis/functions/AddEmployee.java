@@ -15,8 +15,9 @@ public class AddEmployee {
     AddHourly addHourly = new AddHourly();
     Salaried salariedEmploy = new Salaried();
     AddSalaried addSalaried = new AddSalaried();
+    PaymentScheduel paySchedueles = new PaymentScheduel();
 
-    public Employees addNewEmployee(int id){
+    public Employees addNewEmployee(int id, LinkedList<String> scheduel){
         System.out.println("\n############ Enter the employee infomation #################");
         while(true){
             System.out.println("\nEmployee type:\n[1] - Hourly\n[2] - Monthly Fixed\n[3] - Commissioned");
@@ -26,21 +27,28 @@ public class AddEmployee {
                 hourlyEmploy = addHourly.AddHourly();
                 hourlyEmploy.setEmployeeType("Hourly");
                 employee = hourlyEmploy;
+                employee.setPaymentScheduel("weekly 1 friday");
                 break;
             }else if(key == 2){
                 salariedEmploy = addSalaried.addSalaried();
                 salariedEmploy.setEmployeeType("Monthly Fixed");
                 employee = salariedEmploy;
+                employee.setPaymentScheduel("weekly 2 friday");
                 break;
             }else if(key == 3){
                 salariedEmploy = addSalaried.addSalaried();
                 salariedEmploy.setEmployeeType("Commmission");
                 employee = salariedEmploy;
+                employee.setPaymentScheduel("monthly $");
                 break;
             }else{
                 System.out.println("Invalid input, Try again!");
             }
         }
+       
+        paySchedueles.defaultScheduel(scheduel, employee);    
+        
+        
         employee.setId(id);
         return employee;
     }

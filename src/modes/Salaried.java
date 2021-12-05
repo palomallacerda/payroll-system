@@ -1,16 +1,25 @@
 package src.modes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ArrayList;
 
 /*Empregados comissionados e fixos no mês*/
 public class Salaried extends Employees{
 
-    ArrayList<Date> date = new ArrayList<>();
-    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyy");  
+    private ArrayList<LocalDate> saleDate = new ArrayList<>();
     private ArrayList<Integer> sales = new ArrayList<>();
-    int i = 0, j = 0;
+    protected String lastPayDay;
+    int i = 0;
+    int j = 0;
+
+    public void setLastPayDay(String lastPayDay) {
+        this.lastPayDay = lastPayDay;
+    }
+    public String getLastPayDay() {
+        return this.lastPayDay;
+    }
     public void setSale(int saleE) {
         sales.add(i, saleE);
         i+=1; //Apenas os comissionados lançam vendas
@@ -20,8 +29,11 @@ public class Salaried extends Employees{
         return sales;  
     }
 
-    public void setDate(String data) throws ParseException {
-        date.add(format.parse(data));              
+    public void setDate(LocalDate data)  {
+        saleDate.add(data);            
+    }
+    public ArrayList<LocalDate> getSaleDate() {
+        return saleDate;
     }
 
     public void listSalaried(){
@@ -32,8 +44,8 @@ public class Salaried extends Employees{
         "\n[Payment way] ->"+ super.getPaymentWay()+
         "\n[Sales] ->"+getSale());
         System.out.println("[Dates] ->");
-        for(int k = 0; k< date.size();k++){
-            System.out.println(date.get(k).toString()); 
+        for(int k = 0; k< saleDate.size();k++){
+            System.out.println(saleDate.get(k)); 
         }
         System.out.println("\n--------------------------------------------");
     }

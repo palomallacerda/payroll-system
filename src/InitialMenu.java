@@ -1,10 +1,11 @@
 package src;
 import java.util.LinkedList;
-import java.text.ParseException;
 import java.util.Scanner;
 import src.ultis.*; //importando a outra classe
 import src.ultis.functions.AddEmployee;
 import src.ultis.functions.AddSyndicate;
+import src.ultis.functions.PaymentScheduel;
+import src.ultis.functions.Payroll;
 import src.ultis.functions.SetEmployeSale;
 import src.ultis.functions.RemoveEmployee;
 import src.ultis.functions.ServiceTax;
@@ -19,9 +20,12 @@ public class InitialMenu{
     Scanner scan = new Scanner(System.in);
     LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
     LinkedList<Syndicate> syndicates = new LinkedList<>();
+    LinkedList<String> schedueles = new LinkedList<>();
+    PaymentScheduel payScheduel = new PaymentScheduel();
+    Payroll allPayroll = new Payroll();
     int id = 0;
     
-    public void menu() throws ParseException {
+    public void menu()  {
        /*Verificar a viabilidade de talvez add mais uma opção 
        de salvar os dados em um arquivo separado*/
         while(true){ 
@@ -52,12 +56,12 @@ public class InitialMenu{
                     else{
                         System.out.println("########## List of all employees ##########"); 
                         ListAll list = new ListAll();
-                        list.listEmploy(employee, syndicates);
+                        list.listEmploy(employee, syndicates, schedueles);
                     }
                     break;
                 case 1:
                     AddEmployee add = new AddEmployee(); 
-                    employee.add(add.addNewEmployee(id));
+                    employee.add(add.addNewEmployee(id, schedueles));
                     id += 1;
                     AddSyndicate addSyndi = new AddSyndicate();
                     syndicates = addSyndi.AddNewEmploy(employee, syndicates);
@@ -84,20 +88,25 @@ public class InitialMenu{
                     }
                     break;
                 case 6:
-                    UpdateEmployee updateEmp = new UpdateEmployee();
-                    updateEmp.Update(employee, syndicates);
+                    if(!employee.isEmpty()){
+                        UpdateEmployee updateEmp = new UpdateEmployee();
+                        updateEmp.Update(employee, syndicates);
+                    }
+                    else{
+                        System.out.println("There is not any employee to update!");
+                    }
                     break;
                 case 7:
-                    System.out.println("Run today's payroll");
+                    allPayroll.runningTodayPayrool(employee, syndicates, schedueles);
                     break;
                 case 8:
                     System.out.println("Undo/Redo");
                     break;
                 case 9:
-                    System.out.println("Scheduel payment");
+                    payScheduel.changePaymentSchedules(schedueles, employee);
                     break;
                 case 10:
-                    System.out.println("Create a new scheduel payment");
+                    payScheduel.newScheduel(schedueles);
                     break;
                 case 11:
                     scan.close();//close input
