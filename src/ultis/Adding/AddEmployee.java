@@ -1,10 +1,11 @@
-package src.ultis.functions;
+package src.ultis.Adding;
 import java.util.LinkedList;
 import java.util.Scanner;
 import src.modes.Employees;
 import src.modes.Hourly;
 import src.modes.Salaried;
 import src.ultis.SetSalary;
+import src.ultis.functions.PaymentScheduel;
 
 public class AddEmployee {
     

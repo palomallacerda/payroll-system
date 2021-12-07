@@ -1,4 +1,4 @@
-package src.ultis.functions;
+package src.ultis.Adding;
 import java.util.Scanner;
 
 import src.modes.Employees;
