@@ -7,16 +7,18 @@ import src.modes.Syndicate;
 import src.ultis.functions.PaymentScheduel;
 
 public class Backup {
-    private PaymentScheduel schedueles  = new PaymentScheduel();
+    // private PaymentScheduel schedueles  =  new PaymentScheduel();
     private LinkedList<Employees> employees = new LinkedList<>();
     private LinkedList<Syndicate> syndicates = new LinkedList<>();
     private int employeCounter = 0;
     private int syndCounter = -1;
 
-    public Backup(PaymentScheduel scheduel, LinkedList<Employees> auxEmp, LinkedList<Syndicate> auxSynd){
-        this.schedueles = scheduel;
+    public Backup(LinkedList<String> schedueles2, LinkedList<Employees> auxEmp, LinkedList<Syndicate> auxSynd, int employCount, int syndCount){
+        // this.schedueles = schedueles2;
         this.employees = auxEmp;
         this.syndicates = auxSynd;
+        this.employeCounter = employCount;
+        this.syndCounter = syndCount;
     }
     public Backup(){
         //just an option
@@ -27,12 +29,12 @@ public class Backup {
     public LinkedList<Employees> getEmployees() {
         return this.employees;
     }
-    public void setSchedueles(PaymentScheduel schedueles) {
-        this.schedueles = schedueles;
-    }
-    public PaymentScheduel getSchedueles() {
-        return this.schedueles;
-    }
+    // public void setSchedueles(PaymentScheduel schedueles) {
+    //     this.schedueles = schedueles;
+    // }
+    // public PaymentScheduel  getSchedueles() {
+    //     return this.schedueles;
+    // }
     public void setSyndicates(LinkedList<Syndicate> syndicates) {
         this.syndicates = syndicates;
     }

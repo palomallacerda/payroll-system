@@ -10,8 +10,9 @@ public class HistoryHandler  implements HistoryInterface{
     public ArrayList<Backup> getAllStates() {
         return this.allStates;
     } 
-    @Override
+
     public Backup undo() {
+         
         newBack = allStates.get(head);
         if(this.head == 0){
             System.out.println("There is nothing to return!");
@@ -27,7 +28,7 @@ public class HistoryHandler  implements HistoryInterface{
         return newBack;
     }
 
-    @Override
+   
     public Backup redo()    {
         newBack = allStates.get(head);
 
@@ -45,13 +46,13 @@ public class HistoryHandler  implements HistoryInterface{
         return newBack;
     }
 
-    @Override
+  
     public ArrayList<Backup> getBackups() {
         // TODO Auto-generated method stub
         return allStates;
     }
 
-    @Override
+  
     public int getHead() {
         // TODO Auto-generated method stub
         return this.head;

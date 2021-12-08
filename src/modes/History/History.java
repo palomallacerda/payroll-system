@@ -10,13 +10,14 @@ public class History extends Default{
     ArrayList<Backup> states = new ArrayList<>();
     int head = 0;
     Scanner scan = new Scanner(System.in);
+    
 
     public History(){
-        Backup inicialization = new Backup(new PaymentScheduel(),new LinkedList<>(), new LinkedList<>());
+        Backup inicialization = new Backup(new LinkedList<String>(),new LinkedList<>(), new LinkedList<>(), 0, -1);
         this.setStates(inicialization);
-        this.head-=1;
-        
+        this.head -= 1;
     }
+    
     public void setHead(int head) {
         this.head = head;
     }
