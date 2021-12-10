@@ -1,4 +1,4 @@
-package src.ultis.functions;
+package src.ultis.Adding;
 import java.util.LinkedList;
 
 import src.modes.Employees;

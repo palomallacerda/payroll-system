@@ -1,10 +1,11 @@
-package src.ultis.functions;
+package src.ultis.Adding;
 import java.util.LinkedList;
 import java.util.Scanner;
 import src.modes.Employees;
 import src.modes.Hourly;
 import src.modes.Salaried;
 import src.ultis.SetSalary;
+import src.ultis.functions.PaymentScheduel;
 
 public class AddEmployee {
     
@@ -16,6 +17,8 @@ public class AddEmployee {
     Salaried salariedEmploy = new Salaried();
     AddSalaried addSalaried = new AddSalaried();
     PaymentScheduel paySchedueles = new PaymentScheduel();
+    int[] employeesCounter = {0};
+    int[] syndicatesCounter = {-1};
 
     public Employees addNewEmployee(int id, LinkedList<String> scheduel){
         System.out.println("\n############ Enter the employee infomation #################");
@@ -50,6 +53,7 @@ public class AddEmployee {
         
         
         employee.setId(id);
+       
         return employee;
     }
 
@@ -78,5 +82,14 @@ public class AddEmployee {
                 System.out.println("Invalid input, Try again!");
             }
         }
+    }
+
+
+    public int[] getSyndicatesCounter() {
+        return this.syndicatesCounter;
+    }
+
+    public int[] getEmployeesCounter() {
+        return this.employeesCounter;
     }
 }

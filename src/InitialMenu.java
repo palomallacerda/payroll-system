@@ -1,33 +1,47 @@
 package src;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Stack;
+
 import src.ultis.*; //importando a outra classe
-import src.ultis.functions.AddEmployee;
-import src.ultis.functions.AddSyndicate;
+import src.ultis.Adding.AddEmployee;
+import src.ultis.Adding.AddSyndicate;
 import src.ultis.functions.PaymentScheduel;
 import src.ultis.functions.Payroll;
 import src.ultis.functions.SetEmployeSale;
 import src.ultis.functions.RemoveEmployee;
 import src.ultis.functions.ServiceTax;
 import src.ultis.functions.SethoursEmployee;
+import src.ultis.functions.UndoRedo;
 import src.ultis.functions.UpdateEmployee;
 import src.modes.Employees;
 
 import src.modes.Syndicate;
+import src.modes.History.Backup;
+import src.modes.History.History;
+
 
 public class InitialMenu{
     // Vamos inicializar o menu
     Scanner scan = new Scanner(System.in);
-    LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
+ 
+    LinkedList<Employees> employee = new LinkedList<>();
     LinkedList<Syndicate> syndicates = new LinkedList<>();
     LinkedList<String> schedueles = new LinkedList<>();
     PaymentScheduel payScheduel = new PaymentScheduel();
     Payroll allPayroll = new Payroll();
+    History history  = new History();
     int id = 0;
-    
+    Backup newState;
+    boolean flag = true;
+    int[] employeeCounter= {0};
+    int[] syndCounter = {-1};
+
+
     public void menu()  {
-       /*Verificar a viabilidade de talvez add mais uma opção 
-       de salvar os dados em um arquivo separado*/
+        /*Verificar a viabilidade de talvez add mais uma opção 
+        de salvar os dados em um arquivo separado*/
+ 
         while(true){ 
             System.out.println("\n-------------------------------------------");
             System.out.println("----- Welcome to your payrool system ------");
@@ -47,7 +61,7 @@ public class InitialMenu{
             System.out.println("[11] - Leave\n");
             System.out.print("--> ");
             int action = scan.nextInt();
-     
+            
             switch (action) {
                 case 0:
                     if(employee.isEmpty()){
@@ -58,13 +72,16 @@ public class InitialMenu{
                         ListAll list = new ListAll();
                         list.listEmploy(employee, syndicates, schedueles);
                     }
-                    break;
+                break;
                 case 1:
                     AddEmployee add = new AddEmployee(); 
                     employee.add(add.addNewEmployee(id, schedueles));
                     id += 1;
                     AddSyndicate addSyndi = new AddSyndicate();
                     syndicates = addSyndi.AddNewEmploy(employee, syndicates);
+                    
+                    employeeCounter = add.getEmployeesCounter();
+                    syndCounter = add.getSyndicatesCounter();
                     break;
                 case 2:
                     RemoveEmployee remove = new RemoveEmployee();
@@ -100,7 +117,9 @@ public class InitialMenu{
                     allPayroll.runningTodayPayrool(employee, syndicates, schedueles);
                     break;
                 case 8:
-                    System.out.println("Undo/Redo");
+                   UndoRedo undoRedo = new UndoRedo();
+                   undoRedo.selection(payScheduel, employee, syndicates, history,employeeCounter, syndCounter);
+                   flag = false;
                     break;
                 case 9:
                     payScheduel.changePaymentSchedules(schedueles, employee);
@@ -115,13 +134,23 @@ public class InitialMenu{
                     break;
                 default:
                     System.out.println("\nWrong action, try again!!");
+                    flag = false;
                     break;
             }   
-            
+           
+            if(flag) {
+                newState = new Backup(payScheduel, employee, syndicates, employeeCounter, syndCounter);
+                history.setStates(newState);
+                flag = true; //ele só passa aqui quando não fizer o undo/redo
+                // System.out.println("emp/synd "+employeeCounter[0] + syndCounter[0]);
+              }
             System.out.println("\nClick [Enter] to continue");
             scan.nextLine();
             scan.nextLine();
         }
         
     }
+
 }
+
+

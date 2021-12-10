@@ -7,6 +7,8 @@ import src.modes.Hourly;
 import src.modes.Salaried;
 import src.modes.Syndicate;
 import src.ultis.FindEmployee;
+import src.ultis.Adding.AddEmployee;
+import src.ultis.Adding.AddSyndicate;
 
 public class UpdateEmployee {
     Scanner scan = new Scanner(System.in);
