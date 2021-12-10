@@ -7,18 +7,19 @@ import src.modes.Syndicate;
 import src.ultis.functions.PaymentScheduel;
 
 public class Backup {
-    // private PaymentScheduel schedueles  =  new PaymentScheduel();
+    private PaymentScheduel schedueles  =  new PaymentScheduel();
     private LinkedList<Employees> employees = new LinkedList<>();
     private LinkedList<Syndicate> syndicates = new LinkedList<>();
-    private int employeCounter = 0;
-    private int syndCounter = -1;
+    private int[] employeCounter;
+    private int[] syndCounter;
 
-    public Backup(LinkedList<String> schedueles2, LinkedList<Employees> auxEmp, LinkedList<Syndicate> auxSynd, int employCount, int syndCount){
-        // this.schedueles = schedueles2;
+    public Backup(PaymentScheduel schedueles2, LinkedList<Employees> auxEmp, LinkedList<Syndicate> auxSynd, int[] employCount, int[] syndCount){
+        this.schedueles = schedueles2;
         this.employees = auxEmp;
         this.syndicates = auxSynd;
         this.employeCounter = employCount;
         this.syndCounter = syndCount;
+        // System.out.println("EMP AND SYND "+employCount[0] + syndCounter[0]);
     }
     public Backup(){
         //just an option
@@ -29,12 +30,12 @@ public class Backup {
     public LinkedList<Employees> getEmployees() {
         return this.employees;
     }
-    // public void setSchedueles(PaymentScheduel schedueles) {
-    //     this.schedueles = schedueles;
-    // }
-    // public PaymentScheduel  getSchedueles() {
-    //     return this.schedueles;
-    // }
+    public void setSchedueles(PaymentScheduel schedueles) {
+        this.schedueles = schedueles;
+    }
+    public PaymentScheduel  getSchedueles() {
+        return this.schedueles;
+    }
     public void setSyndicates(LinkedList<Syndicate> syndicates) {
         this.syndicates = syndicates;
     }
@@ -42,16 +43,16 @@ public class Backup {
         return this.syndicates;
     }
 
-    public void setEmployeCounter(int employeCounter) {
+    public void setEmployeCounter(int[] employeCounter) {
         this.employeCounter = employeCounter;
     }
-    public int getEmployeCounter() {
+    public int[] getEmployeCounter() {
         return this.employeCounter;
     }
-    public void setSyndCounter(int syndCounter) {
+    public void setSyndCounter(int[] syndCounter) {
         this.syndCounter = syndCounter;
     }
-    public int getSyndCounter() {
+    public int[] getSyndCounter() {
         return this.syndCounter;
     }
 }

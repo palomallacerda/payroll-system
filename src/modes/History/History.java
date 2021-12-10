@@ -11,13 +11,9 @@ public class History extends Default{
     int head = 0;
     Scanner scan = new Scanner(System.in);
     
+    private int[] empCounter ={0};
+    private int[] syndCounter= {-1};
 
-    public History(){
-        Backup inicialization = new Backup(new LinkedList<String>(),new LinkedList<>(), new LinkedList<>(), 0, -1);
-        this.setStates(inicialization);
-        this.head -= 1;
-    }
-    
     public void setHead(int head) {
         this.head = head;
     }
@@ -45,6 +41,12 @@ public class History extends Default{
         this.head+=1;
 
         this.states.add(auxState);
+    }
+
+    public History(){
+        Backup inicialization = new Backup(new PaymentScheduel(),new LinkedList<>(), new LinkedList<>(),empCounter, syndCounter);
+        this.setStates(inicialization);
+        this.head -= 1;
     }
    
 }

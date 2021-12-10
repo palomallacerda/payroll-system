@@ -17,8 +17,8 @@ public class AddEmployee {
     Salaried salariedEmploy = new Salaried();
     AddSalaried addSalaried = new AddSalaried();
     PaymentScheduel paySchedueles = new PaymentScheduel();
-    int employeesCounter = 0;
-    int syndicatesCounter = -1;
+    int[] employeesCounter = {0};
+    int[] syndicatesCounter = {-1};
 
     public Employees addNewEmployee(int id, LinkedList<String> scheduel){
         System.out.println("\n############ Enter the employee infomation #################");
@@ -53,6 +53,7 @@ public class AddEmployee {
         
         
         employee.setId(id);
+       
         return employee;
     }
 
@@ -84,11 +85,11 @@ public class AddEmployee {
     }
 
 
-    public int getSyndicatesCounter() {
+    public int[] getSyndicatesCounter() {
         return this.syndicatesCounter;
     }
 
-    public int getEmployeesCounter() {
+    public int[] getEmployeesCounter() {
         return this.employeesCounter;
     }
 }

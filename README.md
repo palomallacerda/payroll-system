@@ -15,7 +15,7 @@
 |     5    |  Post a servece tax            | ✅|
 |     6    |  Update employee details       | ✅|
 |     7    |  Run today's payroll           | ✅|
-|     8    |  Undo/Redo                     | ❌|
+|     8    |  Undo/Redo                     | ✅|
 |     9    |  Scheduel payment              | ✅| 
 |    10    |  Create a new Scheduel payment | ✅|
 

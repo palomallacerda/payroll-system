@@ -13,45 +13,44 @@ public class HistoryHandler  implements HistoryInterface{
 
     public Backup undo() {
          
-        newBack = allStates.get(head);
+        this.newBack = allStates.get(this.head);
         if(this.head == 0){
             System.out.println("There is nothing to return!");
         }
         else{
             this.head-=1;
-            newBack = allStates.get(head);
+            this.newBack = allStates.get(this.head);
             System.out.println("------------------------");
             System.out.println("  The change is undone!");
             System.out.println("------------------------");
 
         }
-        return newBack;
+        return this.newBack;
     }
 
    
     public Backup redo()    {
-        newBack = allStates.get(head);
+        this.newBack = allStates.get(this.head);
 
         if(this.head > this.allStates.size()) {
           System.out.println("Sorry There is nothing ahead");
         }
         else {
           this.head+=1;
-          newBack=  allStates.get(head);
+          newBack = allStates.get(this.head);
           System.out.println("------------------------");
           System.out.println("  The change is redone!");
           System.out.println("------------------------");
         }
     
-        return newBack;
+        return this.newBack;
     }
 
   
     public ArrayList<Backup> getBackups() {
         // TODO Auto-generated method stub
-        return allStates;
+        return this.allStates;
     }
-
   
     public int getHead() {
         // TODO Auto-generated method stub

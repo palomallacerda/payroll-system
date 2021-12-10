@@ -25,7 +25,7 @@ public class InitialMenu{
     // Vamos inicializar o menu
     Scanner scan = new Scanner(System.in);
  
-    LinkedList<Employees> employee = new LinkedList<>();// reconhecer se ele vai colocar entradas válidas
+    LinkedList<Employees> employee = new LinkedList<>();
     LinkedList<Syndicate> syndicates = new LinkedList<>();
     LinkedList<String> schedueles = new LinkedList<>();
     PaymentScheduel payScheduel = new PaymentScheduel();
@@ -33,9 +33,9 @@ public class InitialMenu{
     History history  = new History();
     int id = 0;
     Backup newState;
-    boolean flag = false;
-    int employeeCounter = 0;
-    int syndCounter = -1;
+    boolean flag = true;
+    int[] employeeCounter= {0};
+    int[] syndCounter = {-1};
 
 
     public void menu()  {
@@ -119,7 +119,7 @@ public class InitialMenu{
                 case 8:
                    UndoRedo undoRedo = new UndoRedo();
                    undoRedo.selection(payScheduel, employee, syndicates, history,employeeCounter, syndCounter);
-                   flag = true;
+                   flag = false;
                     break;
                 case 9:
                     payScheduel.changePaymentSchedules(schedueles, employee);
@@ -134,16 +134,16 @@ public class InitialMenu{
                     break;
                 default:
                     System.out.println("\nWrong action, try again!!");
-                    flag = true;
+                    flag = false;
                     break;
             }   
            
-            if(!flag) {
-                newState = new Backup(schedueles, employee, syndicates, employeeCounter, syndCounter);
+            if(flag) {
+                newState = new Backup(payScheduel, employee, syndicates, employeeCounter, syndCounter);
                 history.setStates(newState);
-                flag = false; //ele só passa aqui quando não fizer o undo/redo
+                flag = true; //ele só passa aqui quando não fizer o undo/redo
+                // System.out.println("emp/synd "+employeeCounter[0] + syndCounter[0]);
               }
-            System.out.println("emp/synd "+employeeCounter + syndCounter);
             System.out.println("\nClick [Enter] to continue");
             scan.nextLine();
             scan.nextLine();
