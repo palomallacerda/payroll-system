@@ -8,7 +8,7 @@ import src.ultis.functions.PaymentScheduel;
 
 public class History extends Default{
     ArrayList<Backup> states = new ArrayList<>();
-    int head = 0;
+    int head = -1;
     Scanner scan = new Scanner(System.in);
     
     private int[] empCounter ={0};
@@ -31,9 +31,9 @@ public class History extends Default{
     public void setStates(Backup auxState){
         int i = 0;
 
-        for(Backup state: states){
+        for(Backup state2: states){
             if(i > this.head){
-                states.remove(state);
+                states.remove(state2);
             }
             i+=1;
         }
@@ -46,7 +46,6 @@ public class History extends Default{
     public History(){
         Backup inicialization = new Backup(new PaymentScheduel(),new LinkedList<>(), new LinkedList<>(),empCounter, syndCounter);
         this.setStates(inicialization);
-        this.head -= 1;
     }
    
 }

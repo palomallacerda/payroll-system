@@ -39,7 +39,7 @@ public class UndoRedo {
     
     private void redoCase(LinkedList<Syndicate> syndicates, LinkedList<Employees>employee, PaymentScheduel payScheduel, int[] syndCounter, int[] employeeCounter, History auxhistory){
         
-        if(auxhistory.getHead() <= auxhistory.getStates().size()) {
+        if(auxhistory.getHead() >= auxhistory.getStates().size()) {
             int head = auxhistory.getHead();
             
             hisInterface = new HistoryHandler(head, auxhistory.getStates());
@@ -51,7 +51,6 @@ public class UndoRedo {
         employee = previusState.getEmployees();
         syndicates = previusState.getSyndicates();
         payScheduel = previusState.getSchedueles();
-        // arumar uma forma de atualizar isso aqui
         employeeCounter = previusState.getEmployeCounter();
         syndCounter = previusState.getSyndCounter();
     }
@@ -59,7 +58,7 @@ public class UndoRedo {
     
     private void undoCase(LinkedList<Syndicate> syndicates, LinkedList<Employees>employee,PaymentScheduel payScheduel,  int[] syndCounter, int[] employeeCounter, History auxhistory){
         
-        if(auxhistory.getHead() >= 0) {
+        if(auxhistory.getHead() > 0) {
             int head = auxhistory.getHead();
             
             hisInterface = new HistoryHandler(head, auxhistory.getStates());
@@ -71,7 +70,6 @@ public class UndoRedo {
         employee = nextState.getEmployees();
         syndicates = nextState.getSyndicates();
         payScheduel = nextState.getSchedueles();
-         //arumar uma forma de atualizar isso aqui
         employeeCounter = nextState.getEmployeCounter();
         syndCounter = nextState.getSyndCounter();
     }

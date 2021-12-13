@@ -138,7 +138,7 @@ public class Payroll {
             }
         }
         System.out.println("\n**********************************************************");
-        System.out.println("\n|[Id] "+employe.getId()+" >[Name] "+employe.getName()+"\nThe payment value is "+ paymentValue);
+        System.out.println("\n|[Id] "+employe.getId()+" >[Name] "+employe.getName()+"\nThe payment value is $"+ paymentValue);
         System.out.println("\n>> Worked "+totalhours+" hours");
         
         if(employe.getSyndicate()){
@@ -146,7 +146,7 @@ public class Payroll {
             paymentValue -= hourlySynd.getServiceTax();
             paymentValue -= hourlySynd.getSyndicateTax();
             System.out.println("\nSyndicate fee applyed");
-            System.out.println("Now total payment is "+paymentValue);
+            System.out.println("Now total payment is $"+paymentValue);
         }
         System.out.println("\n>> The method of payment is "+ employe.getPaymentWay());
         System.out.println("\n**********************************************************\n");
@@ -168,14 +168,14 @@ public class Payroll {
             amount += allSales.get(i);
         }
         System.out.println("\n*********************************************************");
-        System.out.println("\n[Id] "+comissioned.getId()+" |[Name] "+comissioned.getName()+"\nPayment value is "+ paymentValue);
+        System.out.println("\n[Id] "+comissioned.getId()+" |[Name] "+comissioned.getName()+"\nPayment value is $"+ paymentValue);
         System.out.println("\n>> Has done "+amount+" sales");
         if(comissioned.getSyndicate()){
             syndComisioned = findSynd.findSyndicate(syndicate, (comissioned.getAge()*comissioned.getId())+1);
             paymentValue -= syndComisioned.getServiceTax();
             paymentValue -= syndComisioned.getSyndicateTax();
             System.out.println("\n~~ Syndicate fee applyed");
-            System.out.println("~~ Now total payment is "+paymentValue);
+            System.out.println("~~ Now total payment is $"+paymentValue);
         }
         System.out.println("\n>> The method of payment is "+ comissioned.getPaymentWay());
         System.out.println("\n*********************************************************\n");
@@ -187,13 +187,13 @@ public class Payroll {
         Syndicate syndMontly;
 
         System.out.println("\n*********************************************************");
-        System.out.println("\n[Id] "+montly.getId()+" |[Name] "+montly.getName()+"\nPayment value is "+ paymentValue);
+        System.out.println("\n[Id] "+montly.getId()+" |[Name] "+montly.getName()+"\nPayment value is $"+ paymentValue);
         if(montly.getSyndicate()){
             syndMontly = findSynd.findSyndicate(syndicates, (montly.getAge()*montly.getId())+1);
             paymentValue -= syndMontly.getServiceTax();
             paymentValue -= syndMontly.getSyndicateTax();
             System.out.println("\n~~ Syndicate fee applyed");
-            System.out.println("~~ Now total payment is "+paymentValue);
+            System.out.println("~~ Now total payment is $"+paymentValue);
         }
         System.out.println("\n > The method of payment is "+ montly.getPaymentWay());
         System.out.println("\n*********************************************************\n");

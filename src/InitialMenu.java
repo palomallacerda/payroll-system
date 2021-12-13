@@ -1,7 +1,6 @@
 package src;
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Stack;
 
 import src.ultis.*; //importando a outra classe
 import src.ultis.Adding.AddEmployee;
@@ -12,13 +11,15 @@ import src.ultis.functions.SetEmployeSale;
 import src.ultis.functions.RemoveEmployee;
 import src.ultis.functions.ServiceTax;
 import src.ultis.functions.SethoursEmployee;
-import src.ultis.functions.UndoRedo;
 import src.ultis.functions.UpdateEmployee;
 import src.modes.Employees;
 
 import src.modes.Syndicate;
 import src.modes.History.Backup;
+import src.modes.History.EmptyHistory;
 import src.modes.History.History;
+import src.modes.History.HistoryHandler;
+import src.modes.History.HistoryInterface;
 
 
 public class InitialMenu{
@@ -31,6 +32,7 @@ public class InitialMenu{
     PaymentScheduel payScheduel = new PaymentScheduel();
     Payroll allPayroll = new Payroll();
     History history  = new History();
+    HistoryInterface hisInterface = new EmptyHistory();
     int id = 0;
     Backup newState;
     boolean flag = true;
@@ -39,8 +41,6 @@ public class InitialMenu{
 
 
     public void menu()  {
-        /*Verificar a viabilidade de talvez add mais uma opção 
-        de salvar os dados em um arquivo separado*/
  
         while(true){ 
             System.out.println("\n-------------------------------------------");
@@ -72,6 +72,7 @@ public class InitialMenu{
                         ListAll list = new ListAll();
                         list.listEmploy(employee, syndicates, schedueles);
                     }
+                    flag = false;
                 break;
                 case 1:
                     AddEmployee add = new AddEmployee(); 
@@ -117,9 +118,23 @@ public class InitialMenu{
                     allPayroll.runningTodayPayrool(employee, syndicates, schedueles);
                     break;
                 case 8:
-                   UndoRedo undoRedo = new UndoRedo();
-                   undoRedo.selection(payScheduel, employee, syndicates, history,employeeCounter, syndCounter);
-                   flag = false;
+                    System.out.println("Would you like to:\n[1] Undo\n[2] Redo");
+                    int select = scan.nextInt();
+                    scan.nextLine();
+                    try{
+                        if(select == 1){
+                            undoCase();
+                        }
+                        else if(select == 2){
+                            redoCase();
+                        }
+                        else{
+                            System.out.println("Not a valid option!");
+                        }
+                    }catch (Exception e) { //Verificar por que ta dando nullo o vetor
+                        System.out.println(e);
+                    }
+                    flag = false;
                     break;
                 case 9:
                     payScheduel.changePaymentSchedules(schedueles, employee);
@@ -141,15 +156,53 @@ public class InitialMenu{
             if(flag) {
                 newState = new Backup(payScheduel, employee, syndicates, employeeCounter, syndCounter);
                 history.setStates(newState);
-                flag = true; //ele só passa aqui quando não fizer o undo/redo
-                // System.out.println("emp/synd "+employeeCounter[0] + syndCounter[0]);
-              }
+            }
+            flag = true;
             System.out.println("\nClick [Enter] to continue");
             scan.nextLine();
             scan.nextLine();
         }
         
     }
+
+
+    private void redoCase(){
+        
+        if(history.getHead() <= history.getStates().size()) {
+            int head = history.getHead();
+            
+            hisInterface = new HistoryHandler(head, history.getStates());
+            history.setHead(head+1);
+        }
+        
+        Backup previusState = hisInterface.redo();
+        
+        employee = previusState.getEmployees();
+        syndicates = previusState.getSyndicates();
+        payScheduel = previusState.getSchedueles();
+        employeeCounter = previusState.getEmployeCounter();
+        syndCounter = previusState.getSyndCounter();
+    }
+    
+    
+    private void undoCase(){
+        
+        if(history.getHead() >= 0) {
+            int head = history.getHead();
+            
+            hisInterface = new HistoryHandler(head, history.getStates());
+            history.setHead(head-1);
+        }
+    
+        Backup nextState = hisInterface.undo();
+    
+        employee = nextState.getEmployees();
+        syndicates = nextState.getSyndicates();
+        payScheduel = nextState.getSchedueles();
+        employeeCounter = nextState.getEmployeCounter();
+        syndCounter = nextState.getSyndCounter();
+    }
+
 
 }
 
