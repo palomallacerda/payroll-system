@@ -10,8 +10,8 @@ public class Backup {
     private PaymentScheduel schedueles  =  new PaymentScheduel();
     private LinkedList<Employees> employees = new LinkedList<>();
     private LinkedList<Syndicate> syndicates = new LinkedList<>();
-    private int[] employeCounter;
-    private int[] syndCounter;
+    private int[] employeCounter = {0};
+    private int[] syndCounter = {-1};
 
     public Backup(PaymentScheduel schedueles2, LinkedList<Employees> auxEmp, LinkedList<Syndicate> auxSynd, int[] employCount, int[] syndCount){
         this.schedueles = schedueles2;
@@ -19,7 +19,6 @@ public class Backup {
         this.syndicates = auxSynd;
         this.employeCounter = employCount;
         this.syndCounter = syndCount;
-        // System.out.println("EMP AND SYND "+employCount[0] + syndCounter[0]);
     }
     public Backup(){
         //just an option
