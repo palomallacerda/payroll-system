@@ -18,12 +18,13 @@ public class HistoryHandler  implements HistoryInterface{
             System.out.println("There is nothing to return!");
         }
         else{
-            this.head-=1;
-            this.newBack = allStates.get(this.head);
+
             System.out.println("------------------------");
             System.out.println("  The change is undone!");
             System.out.println("------------------------");
 
+            this.head-=1;
+            this.newBack = allStates.get(this.head);
         }
         return this.newBack;
     }
@@ -33,14 +34,14 @@ public class HistoryHandler  implements HistoryInterface{
         this.newBack = allStates.get(this.head);
 
         if(this.head > this.allStates.size()) {
-          System.out.println("Sorry There is nothing ahead");
+            System.out.println("Sorry There is nothing ahead");
         }
         else {
-          this.head+=1;
-          newBack = allStates.get(this.head);
-          System.out.println("------------------------");
-          System.out.println("  The change is redone!");
-          System.out.println("------------------------");
+            System.out.println("------------------------");
+            System.out.println("  The change is redone!");
+            System.out.println("------------------------");
+            this.head+=1;
+            newBack = allStates.get(this.head);
         }
     
         return this.newBack;
@@ -48,12 +49,10 @@ public class HistoryHandler  implements HistoryInterface{
 
   
     public ArrayList<Backup> getBackups() {
-        // TODO Auto-generated method stub
         return this.allStates;
     }
   
     public int getHead() {
-        // TODO Auto-generated method stub
         return this.head;
     }
     public HistoryHandler(int head, ArrayList<Backup> states){ //constructor

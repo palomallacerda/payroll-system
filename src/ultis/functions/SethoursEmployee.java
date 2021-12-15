@@ -49,7 +49,7 @@ public class SethoursEmployee {
                 } 
                 
                 System.out.println("--------------------------------------------");
-                System.out.println(">>>>>>> Today "+ timeCard.getToday()+ " <<<<<<<<");
+                System.out.println(">>>>>>>>>>>> Today "+ timeCard.getToday()+ " <<<<<<<<<<<<<");
                 System.out.println("\n"+hourlyEmploy.getName()+" Worked "+ timeCard.getWorkedhours()+" hours");
                 if(timeCard.getExeededTime()>0){
                     System.out.println("Exeeded hours: "+timeCard.getExeededTime());
