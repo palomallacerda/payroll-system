@@ -92,4 +92,5 @@ public class AddEmployee {
     public int[] getEmployeesCounter() {
         return this.employeesCounter;
     }
+    // Criar uma superclasse para os outros add
 }

@@ -43,6 +43,7 @@ public class RemoveEmployee {
                                 System.out.println("[ID]- "+ aux.getId()+" --- [Name]- "+ aux.getName());
                                 System.out.println("---------------------------------------"); 
                             }
+                            break;
                         case 2:
                             continue;
                         default:

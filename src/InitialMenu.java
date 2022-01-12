@@ -39,7 +39,7 @@ public class InitialMenu{
     int[] employeeCounter= {0};
     int[] syndCounter = {-1};
 
-
+// Extrair alguns metodos para facilitar o entendimento
     public void menu()  {
  
         while(true){ 

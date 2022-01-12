@@ -1,12 +1,12 @@
 package src.ultis.Adding;
 import src.modes.*;
 import java.util.Scanner;
-
+// Fazer dessa classe uma subclasse de addEmployee
 public class AddHourly {
 
     Hourly hourlyEmploy = new Hourly();
     Scanner scann = new Scanner(System.in);
-    
+
     public Hourly AddHourly(){
         System.out.print("Name - ");
         String name = scann.next();
