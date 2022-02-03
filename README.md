@@ -25,10 +25,25 @@
 - *Bloaters*
     - Founded in PaymentScheduel Long Method
         - Line 87 untill 151   (Created a new method 'scheduelRuning' to fix it) and by so extracting the method
-#### Before 
+
+- *Dispensables*
+    - Several unused command lines were found. It was necessary to clean them up to make the code cleaner and more understandable.
+    
+- *Generative Speculation*
+    - Empty multi-class constructors are not used.
+    - Employee class | Line 7 untill 10 (Some repeted atributes and methods) Multiple class getters and setters are never used;
+
+- *Data Class*
+    - Large number of methods in InitialMenu class; | Fixed during AB1 itself by putting more switchs/case|
+
+- *Duplicate code*
+    - Some methods were repeted in the subclasses (History folder)| Fixed by creating some templates during the end of AB1. 
+
+## Examples 
+
+### Before 
 ``` java
 public void changePaymentSchedules(LinkedList<String> schedueles, LinkedList<Employees> employee){
-        
         while(true){
             System.out.println("\n--------- Here is all the Avalible Scheduel options -----------");
             listAvalibleSchedules(schedueles);
@@ -158,3 +173,4 @@ private void scheduelRuning(LinkedList<String> schedueles){
     }
 }   
 ```
+

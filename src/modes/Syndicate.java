@@ -2,8 +2,8 @@ package src.modes;
 
 public class Syndicate { 
     private String name;
-    private double syndicateTax; //taxa do sindicato
-    private double serviceTax;  //taxa por serviço
+    private double syndicateTax; 
+    private double serviceTax;  
     private int syndicateId;
     private boolean flag = false;
 

@@ -18,7 +18,6 @@ public class AddHourly {
         String address = scann.next();
         hourlyEmploy.setAddress(address);
         
-        
         while(true){
             System.out.println("\nPayment way:\n[1] - Mail paycheck\n[2] - Paycheck\n[3] - Deposit in bank account");
             System.out.print("--> ");

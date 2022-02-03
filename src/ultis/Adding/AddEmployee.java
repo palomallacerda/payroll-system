@@ -50,8 +50,7 @@ public class AddEmployee {
         }
        
         paySchedueles.defaultScheduel(scheduel, employee);    
-        
-        
+    
         employee.setId(id);
        
         return employee;
@@ -84,7 +83,6 @@ public class AddEmployee {
         }
     }
 
-
     public int[] getSyndicatesCounter() {
         return this.syndicatesCounter;
     }
@@ -92,5 +90,4 @@ public class AddEmployee {
     public int[] getEmployeesCounter() {
         return this.employeesCounter;
     }
-    // Criar uma superclasse para os outros add
 }
