@@ -35,7 +35,7 @@ public class PaymentScheduel {
 
     public void newScheduel(LinkedList<String> schedueles){
         System.out.println("--------- You can creat some new schedueles ----------");
-        System.out.println("How many schedueles do you want do cread ?");
+        System.out.println("How many schedueles do you want to create?");
         int n = scan.nextInt();
         while(n != 0){
             System.out.println("\nEnter what new schedule you'd like to create");
@@ -85,7 +85,7 @@ public class PaymentScheduel {
     }
 
     public void changePaymentSchedules(LinkedList<String> schedueles, LinkedList<Employees> employee){
-        
+        // Foi necessario criar outro método para diminuir a complexidade do código
         while(true){
             System.out.println("\n--------- Here is all the Avalible Scheduel options -----------");
             listAvalibleSchedules(schedueles);
@@ -107,32 +107,7 @@ public class PaymentScheduel {
                         changePaymentSchedules(schedueles, employee);
                     }   
                     else{
-                        System.out.println(auxEmp.getName()+"Is now a "+auxEmp.getPaymentScheduel());
-                        System.out.println("\nWhat new scheduel would you like to put:");
-                        listAvalibleSchedules(schedueles);
-                        int index = scan.nextInt();
-                        for(int i = 0; i < schedueles.size(); i++){
-                            if(index == i){
-                                changeScheduel = schedueles.get(i);
-                            }
-                        }
-
-                        if(changeScheduel == null){
-                            System.out.println("Option invalid");
-                        }
-                        else{
-                            if(auxEmp.getPaymentScheduel().equals(changeScheduel)){
-                                System.out.println("\n---- There is nothing to change----");
-                                System.out.println(" ----You already has this scheduel ----");
-                            }
-                            else{
-                                auxEmp.setPaymentScheduel(changeScheduel);
-                                System.out.println("Sucessfully changed to "+changeScheduel);
-                                System.out.println("\nClick [Enter] to continue");
-                                scan.nextLine();
-                                scan.nextLine();
-                            }
-                        }
+                        scheduelRuning(schedueles);
                     }
                     break;
                 case 2:
@@ -145,9 +120,35 @@ public class PaymentScheduel {
             }
         
         }
-        
     }
-
+    // Método estava muito longo logo foi divido para melhor entendimento
+    private void scheduelRuning(LinkedList<String> schedueles){
+        System.out.println(auxEmp.getName()+"Is now a "+auxEmp.getPaymentScheduel());
+        System.out.println("\nWhat new scheduel would you like to put:");
+        listAvalibleSchedules(schedueles);
+        int index = scan.nextInt();
+        for(int i = 0; i < schedueles.size(); i++){
+            if(index == i){
+                changeScheduel = schedueles.get(i);
+            }
+        }
+        if(changeScheduel == null){
+            System.out.println("Option invalid");
+        }
+        else{
+            if(auxEmp.getPaymentScheduel().equals(changeScheduel)){
+                System.out.println("\n---- There is nothing to change ----");
+                System.out.println(" ---- You already has this scheduel ----");
+            }
+            else{
+                auxEmp.setPaymentScheduel(changeScheduel);
+                System.out.println("Sucessfully changed to "+changeScheduel);
+                System.out.println("\nClick [Enter] to continue");
+                scan.nextLine();
+                scan.nextLine();
+            }
+        }
+    }
     public void listAvalibleSchedules(LinkedList<String> scheduel){
         for(int i = 0;i<scheduel.size(); i++){
             System.out.println("["+i+"] - "+scheduel.get(i));

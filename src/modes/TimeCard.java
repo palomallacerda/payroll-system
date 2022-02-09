@@ -53,6 +53,7 @@ public class TimeCard {
     public String getToday() {
         return this.today;
     }
+    
     public void printTimecard(){
         System.out.println("[Date] "+ this.getToday());
         System.out.println("[Cheack in] "+ this.getCheckIn());

@@ -13,7 +13,8 @@ public class History extends Default{
     
     private int[] empCounter ={0};
     private int[] syndCounter= {-1};
-
+    
+    // Tinha alguns métodos repetidos foram retirados
     public void setHead(int head) {
         this.head = head;
     }

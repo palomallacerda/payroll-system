@@ -50,8 +50,7 @@ public class AddEmployee {
         }
        
         paySchedueles.defaultScheduel(scheduel, employee);    
-        
-        
+    
         employee.setId(id);
        
         return employee;
@@ -83,7 +82,6 @@ public class AddEmployee {
             }
         }
     }
-
 
     public int[] getSyndicatesCounter() {
         return this.syndicatesCounter;

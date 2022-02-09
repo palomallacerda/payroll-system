@@ -24,6 +24,7 @@ public class UpdateEmployee {
     int id;
     String aux;
     
+    // Verificar se não existe coisas duplicadas
     public void Update(LinkedList<Employees> employee, LinkedList<Syndicate> syndEmp){
         
         System.out.println("[Employee ID]");

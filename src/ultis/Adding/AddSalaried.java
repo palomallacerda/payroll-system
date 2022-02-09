@@ -66,8 +66,7 @@ public class AddSalaried {
 
         return salariedEmploy;
     }
-
-
+    
     public Salaried updateCommissioned(Employees auxEmployees){
         salariedEmploy.setAddress(auxEmployees.getAddress());
         salariedEmploy.setName(auxEmployees.getName());

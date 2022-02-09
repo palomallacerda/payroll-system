@@ -39,7 +39,7 @@ public class InitialMenu{
     int[] employeeCounter= {0};
     int[] syndCounter = {-1};
 
-
+// Extrair alguns metodos para facilitar o entendimento
     public void menu()  {
  
         while(true){ 
@@ -165,7 +165,6 @@ public class InitialMenu{
         
     }
 
-
     private void redoCase(){
         
         if(history.getHead() <= history.getStates().size()) {
@@ -183,7 +182,6 @@ public class InitialMenu{
         employeeCounter = previusState.getEmployeCounter();
         syndCounter = previusState.getSyndCounter();
     }
-    
     
     private void undoCase(){
         

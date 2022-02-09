@@ -14,6 +14,7 @@ public class SetSalary {
         this.week = 0.0;
         this.commission = 0.0;
     }   
+    
     /*metodos setter and getter*/
     public void setCommission(double commission) {
         this.commission = commission;
@@ -39,12 +40,10 @@ public class SetSalary {
         if(employ.getEmployeeType().equals("Hourly")){
             exeededTime =  timecard.getExeededTime();
             System.out.println("This employee worked"+ exeededTime+"more than expected");
-           
-            //criar a classe para pagamento
         }
         if(employ.getSyndicate()){
             System.out.println("Syndicate will discount the tax");
-            //Criar a classe para pagamento
+
         }   
     }
 

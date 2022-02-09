@@ -1,7 +1,8 @@
 package src.modes;
 import java.util.Scanner;
 
-
+// Por ser a super classe foi preciso analisar melhor o uso dos métodos 
+// nas subclasses
 public class Employees { //classe
     Scanner scan = new Scanner(System.in);
     protected String name; 
@@ -14,7 +15,6 @@ public class Employees { //classe
     private boolean flag = false;
     
     int id = 0; 
-
 
     public void setPaymentScheduel(String paymentScheduel) {
         this.paymentScheduel = paymentScheduel;
@@ -64,7 +64,6 @@ public class Employees { //classe
     
     public void setAddress(String address) {
         this.address = address;
-        //verificar pois ele só lê a primeira linha
     }
     
     public String getAddress() {
@@ -86,9 +85,7 @@ public class Employees { //classe
     }
 
     public void setEmployeeType(String employeeType) {
-        //add dps
         this.employeeType = employeeType;
-        //Criar forma de seleção para cada payment
     }
     
     public String getEmployeeType() {
