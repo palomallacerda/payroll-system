@@ -24,23 +24,21 @@
 
 - *Bloaters*
     - Founded in PaymentScheduel Long Method
-        - Line 87 untill 151   (Created a new method 'scheduelRuning' to fix it) and by so extracting the method
+        - __Line 87 untill 151__   (Created a new method 'scheduelRuning' to fix it) and by so extracting the method
 
 - *Dispensables*
     - Several unused command lines were found. It was necessary to clean them up to make the code cleaner and more understandable.
     
 - *Generative Speculation*
     - Empty multi-class constructors are not used.
-    - Employee class | Line 7 untill 10 (Some repeted atributes and methods) Multiple class getters and setters are never used;
+    - Employee class | __Line 7 untill 10__ (Some repeted atributes and methods) Multiple class getters and setters are never used;
 
 - *Data Class*
     - Large number of methods in InitialMenu class; | Fixed during AB1 itself by putting more switchs/case|
 
 - *Duplicate code*
-    - Some methods were repeted in the subclasses (History folder)| Fixed by creating some templates during the end of AB1. 
-
-## Examples 
-
+    - Some methods were repeted in the subclasses (History folder)| Fixed by creating some templates during the end of AB1.
+## Example
 ### Before 
 ``` java
 public void changePaymentSchedules(LinkedList<String> schedueles, LinkedList<Employees> employee){
@@ -173,4 +171,9 @@ private void scheduelRuning(LinkedList<String> schedueles){
     }
 }   
 ```
+## Design patters used
+- *Inefficiently structure of  decision was used*
+    - Most of the struture has been succefully rewrited. I implemented the Design Patter __command__ in src/modes/Employees.java and it's sub classes.
+- *Inefficiently use of classes* 
+    - Addemployee class, src/ultis/Adding/AddEmployee.java, did something specific in several different ways, so we extracted all these algorithms into separate classes.I did it using the Design Pattern __Strategy__.
 

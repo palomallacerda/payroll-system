@@ -7,7 +7,8 @@ import src.modes.Salaried;
 import src.ultis.SetSalary;
 import src.ultis.functions.PaymentScheduel;
 
-public class AddEmployee {
+// Strategy used
+public class AddEmployee { 
     
     Scanner scann = new Scanner(System.in);
     SetSalary setsalary = new SetSalary();
@@ -58,6 +59,7 @@ public class AddEmployee {
 
     public void updateNewEmployee(Employees empAux, LinkedList<Employees> employeeAdd){
         System.out.println("Set the employee type that you would like to put:");
+        
         while(true){
             System.out.println("\nEmployee type:\n[1] - Hourly\n[2] - Monthly Fixed\n[3] - Commissioned");
             System.out.print("--> ");
