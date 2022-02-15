@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 // Por ser a super classe foi preciso analisar melhor o uso dos métodos 
 // nas subclasses
+// Command used
 public class Employees { //classe
     Scanner scan = new Scanner(System.in);
     protected String name; 
